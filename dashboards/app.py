@@ -394,12 +394,17 @@ def load_membership_data():
 
 def main():
     # Header banner - analytics.usa.gov style with logo
-    logo_path = Path(__file__).parent.parent / "assets" / "rmef-logo.png"
+    logo_path = Path(__file__).parent.parent / "assets" / "rmef-logo.jpg"
     
     col1, col2 = st.columns([1, 5])
     with col1:
         if logo_path.exists():
-            st.image(str(logo_path), width=120)
+            try:
+                from PIL import Image
+                logo = Image.open(logo_path)
+                st.image(logo, width=120)
+            except Exception:
+                pass  # Skip logo if there's an issue
     with col2:
         st.markdown("""
             <div class="header-banner">
