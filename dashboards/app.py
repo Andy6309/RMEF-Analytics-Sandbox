@@ -277,9 +277,10 @@ def get_db_connection():
     if not db_path.exists():
         st.info("Database not found. Running ETL pipeline to generate data...")
         try:
-            from pipelines.etl_pipeline import main as run_etl
-            run_etl()
-            st.success("ETL pipeline completed successfully!")
+            from pipelines.etl_pipeline import RMEFPipeline
+            pipeline = RMEFPipeline()
+            stats = pipeline.run()
+            st.success(f"ETL pipeline completed successfully! Loaded {stats.get('total_records', 0)} records.")
         except Exception as e:
             st.error(f"Error running ETL pipeline: {e}")
             raise
