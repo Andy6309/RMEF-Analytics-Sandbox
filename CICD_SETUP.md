@@ -65,7 +65,7 @@ git commit -m "Initial commit: RMEF Analytics Sandbox with CI/CD"
 ### 3. Push to GitHub
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/rmef-analytics-sandbox.git
+git remote add origin https://github.com/Andy6309/rmef-analytics-sandbox.git
 git branch -M main
 git push -u origin main
 ```
@@ -89,9 +89,9 @@ GitHub Actions will automatically run once you push. No additional configuration
 Add these to your README.md:
 
 ```markdown
-![CI Pipeline](https://github.com/YOUR_USERNAME/rmef-analytics-sandbox/workflows/CI%20Pipeline/badge.svg)
-![Deploy Dashboard](https://github.com/YOUR_USERNAME/rmef-analytics-sandbox/workflows/Deploy%20Dashboard/badge.svg)
-![Data Quality](https://github.com/YOUR_USERNAME/rmef-analytics-sandbox/workflows/Data%20Quality%20Checks/badge.svg)
+![CI Pipeline](https://github.com/Andy6306/rmef-analytics-sandbox/workflows/CI%20Pipeline/badge.svg)
+![Deploy Dashboard](https://github.com/Andy6306/rmef-analytics-sandbox/workflows/Deploy%20Dashboard/badge.svg)
+![Data Quality](https://github.com/Andy6306/rmef-analytics-sandbox/workflows/Data%20Quality%20Checks/badge.svg)
 ```
 
 ## Deployment to Streamlit Cloud

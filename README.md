@@ -193,10 +193,6 @@ ETL logs are written to `pipelines/etl.log` with timestamps and severity levels.
 
 This is a demonstration/portfolio project using mock data. Not affiliated with the actual Rocky Mountain Elk Foundation.
 
-## Contributing
-
-This is a sandbox project for learning and demonstration purposes. Feel free to fork and extend!
-
 ---
 
 *Built for elk conservation and data analytics*
