@@ -391,6 +391,9 @@ def load_membership_data():
     query = """
     SELECT 
         donor_id,
+        first_name,
+        last_name,
+        email,
         donor_type,
         membership_level,
         join_date,
