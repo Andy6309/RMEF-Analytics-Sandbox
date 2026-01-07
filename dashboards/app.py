@@ -828,6 +828,8 @@ def main():
             pop_change = latest_pop - prev_year_pop
             pop_change_pct = (pop_change / prev_year_pop * 100) if prev_year_pop > 0 else 0
             
+            st.markdown("<br>", unsafe_allow_html=True)
+            
             col1, col2, col3, col4 = st.columns(4)
             
             with col1:
