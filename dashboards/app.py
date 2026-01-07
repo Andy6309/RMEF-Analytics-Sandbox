@@ -393,13 +393,20 @@ def load_membership_data():
 
 
 def main():
-    # Header banner - analytics.usa.gov style
-    st.markdown("""
-        <div class="header-banner">
-            <h1>RMEF Analytics Dashboard</h1>
-            <p>Rocky Mountain Elk Foundation - Conservation & Fundraising Metrics</p>
-        </div>
-    """, unsafe_allow_html=True)
+    # Header banner - analytics.usa.gov style with logo
+    logo_path = Path(__file__).parent.parent / "assets" / "rmef-logo.png"
+    
+    col1, col2 = st.columns([1, 5])
+    with col1:
+        if logo_path.exists():
+            st.image(str(logo_path), width=120)
+    with col2:
+        st.markdown("""
+            <div class="header-banner">
+                <h1>RMEF Analytics Dashboard</h1>
+                <p>Rocky Mountain Elk Foundation - Conservation & Fundraising Metrics</p>
+            </div>
+        """, unsafe_allow_html=True)
     
     # Load data
     try:
