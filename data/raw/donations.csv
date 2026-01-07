@@ -1,51 +1,501 @@
 donation_id,donor_id,campaign_id,amount,donation_date,payment_method,is_recurring,notes
-DN001,D001,C002,250.00,2023-01-15,Credit Card,True,Annual membership renewal
-DN002,D003,C007,15000.00,2023-02-01,Wire Transfer,False,Corporate sponsorship
-DN003,D005,C001,500.00,2023-03-10,Credit Card,False,Spring migration support
-DN004,D009,C003,50000.00,2023-06-15,Wire Transfer,False,Foundation grant for land acquisition
-DN005,D002,C002,100.00,2023-04-22,Credit Card,True,Monthly membership
-DN006,D006,C007,25000.00,2023-03-01,Check,False,Platinum corporate partner
-DN007,D008,C004,150.00,2023-05-01,Credit Card,False,Youth camp sponsorship
-DN008,D011,C001,75.00,2023-04-15,Credit Card,False,Migration corridor donation
-DN009,D014,C002,500.00,2023-02-28,Credit Card,True,Gold membership
-DN010,D018,C003,100000.00,2023-07-01,Wire Transfer,False,Major foundation grant
-DN011,D012,C007,10000.00,2023-05-15,Check,False,Corporate matching gift
-DN012,D019,C002,250.00,2023-06-01,Credit Card,True,Membership upgrade
-DN013,D022,C006,35000.00,2023-08-01,Wire Transfer,False,Habitat restoration sponsor
-DN014,D001,C009,1000.00,2023-10-15,Credit Card,False,Gala ticket purchase
-DN015,D015,C007,5000.00,2023-09-01,Check,False,Corporate partnership
-DN016,D023,C002,250.00,2023-07-04,Credit Card,True,Independence Day membership
-DN017,D004,C005,50.00,2023-11-15,Credit Card,False,Winter feeding donation
-DN018,D007,C008,200.00,2023-09-15,Credit Card,False,Research support
-DN019,D010,C002,75.00,2023-12-25,Credit Card,False,Holiday membership gift
-DN020,D028,C007,8000.00,2023-10-01,Check,False,Outfitter partnership
-DN021,D013,C010,100.00,2023-08-20,Credit Card,False,Wildfire recovery
-DN022,D016,C002,75.00,2023-08-22,Credit Card,True,Bronze membership
-DN023,D020,C009,500.00,2023-10-15,Credit Card,False,Gala attendance
-DN024,D024,C002,100.00,2023-10-18,Credit Card,True,Silver membership
-DN025,D026,C002,250.00,2023-11-14,Credit Card,True,Gold membership renewal
-DN026,D029,C005,25.00,2023-12-01,Credit Card,False,Winter feeding support
-DN027,D017,C012,100.00,2024-01-08,Credit Card,True,New membership
-DN028,D021,C012,75.00,2024-01-15,Credit Card,True,Bronze membership
-DN029,D025,C011,150.00,2024-03-15,Credit Card,False,Spring migration 2024
-DN030,D027,C012,100.00,2024-02-01,Credit Card,True,Silver membership
-DN031,D030,C014,75.00,2024-02-15,Credit Card,False,Research donation
-DN032,D003,C007,15000.00,2024-02-01,Wire Transfer,True,Annual corporate renewal
-DN033,D006,C013,100000.00,2024-01-15,Wire Transfer,False,Legacy gift pledge
-DN034,D009,C015,75000.00,2024-03-01,Wire Transfer,False,Public access grant
-DN035,D018,C006,50000.00,2024-01-20,Wire Transfer,False,Habitat restoration grant
-DN036,D001,C012,250.00,2024-01-15,Credit Card,True,Membership renewal
-DN037,D005,C011,500.00,2024-03-20,Credit Card,False,Migration support
-DN038,D008,C012,250.00,2024-02-08,Credit Card,True,Gold membership
-DN039,D011,C014,100.00,2024-03-01,Credit Card,False,Predator study support
-DN040,D014,C012,500.00,2024-02-28,Credit Card,True,Gold membership renewal
-DN041,D019,C011,300.00,2024-04-01,Credit Card,False,Spring campaign
-DN042,D022,C015,40000.00,2024-03-15,Wire Transfer,False,Access improvement sponsor
-DN043,D012,C013,25000.00,2024-04-01,Check,False,Legacy giving pledge
-DN044,D023,C012,250.00,2024-03-04,Credit Card,True,Membership renewal
-DN045,D002,C012,100.00,2024-04-22,Credit Card,True,Monthly membership
-DN046,D007,C014,150.00,2024-02-20,Credit Card,False,Research support
-DN047,D015,C012,5000.00,2024-03-01,Check,False,Corporate membership
-DN048,D028,C015,12000.00,2024-04-01,Check,False,Access project sponsor
-DN049,D004,C012,75.00,2024-05-05,Credit Card,True,Bronze membership
-DN050,D010,C011,50.00,2024-04-15,Credit Card,False,Migration donation
+DN0001,D0655,C002,155.64,2023-08-17,Wire Transfer,False,Emergency wildlife support
+DN0002,D0090,C010,39.15,2023-08-12,Wire Transfer,False,Annual membership renewal
+DN0003,D0575,C004,3655.96,2024-03-05,Wire Transfer,False,Conservation project funding
+DN0004,D0829,C014,407.76,2024-12-15,PayPal,False,One-time contribution
+DN0005,D0221,C013,69.05,2023-04-10,Check,False,
+DN0006,D0271,C013,243.23,2023-05-08,PayPal,True,Conservation project funding
+DN0007,D0850,C011,4377.68,2024-08-14,Wire Transfer,False,Annual membership renewal
+DN0008,D0678,C004,4933.50,2023-08-27,Credit Card,False,Land acquisition support
+DN0009,D0651,C014,200.84,2023-08-03,Check,False,Monthly donation
+DN0010,D0624,C011,371.34,2023-06-17,PayPal,False,Emergency wildlife support
+DN0011,D0225,C011,389.95,2023-02-27,Wire Transfer,False,Youth education program
+DN0012,D0411,C005,458.74,2024-08-03,Check,False,Land acquisition support
+DN0013,D0406,C015,48590.93,2023-09-29,Wire Transfer,False,Emergency wildlife support
+DN0014,D0552,C005,2427.95,2024-08-20,PayPal,False,One-time contribution
+DN0015,D0522,C008,47.38,2023-04-23,Wire Transfer,False,Elk research funding
+DN0016,D0611,C002,308.05,2024-04-24,ACH Transfer,False,Emergency wildlife support
+DN0017,D0882,C001,1015.48,2024-07-03,Check,False,Youth education program
+DN0018,D0115,C005,240.52,2023-09-27,ACH Transfer,False,Emergency wildlife support
+DN0019,D0935,C002,1843.00,2024-10-16,ACH Transfer,False,One-time contribution
+DN0020,D0383,C013,477.91,2024-06-27,Credit Card,False,Land acquisition support
+DN0021,D0020,C002,88478.58,2023-11-11,Wire Transfer,True,
+DN0022,D0970,C002,255.85,2023-03-12,ACH Transfer,False,One-time contribution
+DN0023,D0676,C008,20687.06,2024-06-24,ACH Transfer,False,Habitat restoration support
+DN0024,D0952,C009,3604.40,2024-12-31,Check,False,Youth education program
+DN0025,D0449,C015,82.48,2023-08-19,Credit Card,False,
+DN0026,D0568,C004,28.42,2024-12-25,Credit Card,False,Annual membership renewal
+DN0027,D0881,C006,138.05,2024-11-16,PayPal,False,One-time contribution
+DN0028,D0741,C015,3092.95,2023-09-06,PayPal,False,Habitat restoration support
+DN0029,D0097,C002,2094.34,2024-02-25,PayPal,False,Annual membership renewal
+DN0030,D0690,C011,14349.70,2024-02-17,Check,False,Monthly donation
+DN0031,D0255,C004,238.09,2024-03-08,Wire Transfer,False,Habitat restoration support
+DN0032,D0896,C015,408.81,2024-07-17,Credit Card,True,Emergency wildlife support
+DN0033,D0857,C001,93004.86,2023-08-31,Wire Transfer,False,Land acquisition support
+DN0034,D0219,C014,52.85,2024-01-24,Credit Card,False,Conservation project funding
+DN0035,D0949,C013,1783.62,2024-12-14,ACH Transfer,False,Land acquisition support
+DN0036,D0159,C004,485.14,2024-08-16,ACH Transfer,True,Youth education program
+DN0037,D0059,C001,263.85,2024-06-27,Wire Transfer,True,Emergency wildlife support
+DN0038,D0083,C014,307.64,2024-11-22,Wire Transfer,False,
+DN0039,D0253,C010,319.21,2024-03-05,ACH Transfer,False,Youth education program
+DN0040,D0958,C005,365.19,2023-09-02,Check,False,Conservation project funding
+DN0041,D0469,C006,93894.76,2023-01-10,PayPal,False,
+DN0042,D0103,C002,265.30,2023-05-16,Check,False,Habitat restoration support
+DN0043,D0379,C005,421.03,2024-12-21,Check,False,Emergency wildlife support
+DN0044,D0009,C011,1847.20,2024-11-10,Credit Card,False,One-time contribution
+DN0045,D0271,C002,3840.88,2023-06-09,Check,False,Habitat restoration support
+DN0046,D0735,C006,326.26,2023-09-28,ACH Transfer,False,Annual membership renewal
+DN0047,D0095,C011,156.42,2023-01-04,Check,False,Conservation project funding
+DN0048,D0166,C012,360.19,2024-07-28,Credit Card,True,One-time contribution
+DN0049,D0559,C001,3121.29,2023-06-01,PayPal,True,Conservation project funding
+DN0050,D0374,C015,97358.65,2023-02-10,Check,False,Habitat restoration support
+DN0051,D0683,C002,290.94,2024-02-21,ACH Transfer,False,Habitat restoration support
+DN0052,D0886,C003,82023.31,2024-02-27,Credit Card,True,Youth education program
+DN0053,D0802,C015,343.21,2023-09-12,Check,True,Monthly donation
+DN0054,D0392,C014,248.58,2023-07-24,PayPal,False,Habitat restoration support
+DN0055,D0229,C001,2293.10,2023-10-13,Credit Card,False,Conservation project funding
+DN0056,D0360,C011,347.77,2024-07-03,Check,False,Monthly donation
+DN0057,D0899,C005,482.20,2023-09-29,Credit Card,True,Elk research funding
+DN0058,D0354,C012,2463.77,2024-06-07,Credit Card,False,
+DN0059,D0195,C005,232.13,2024-06-16,ACH Transfer,False,Habitat restoration support
+DN0060,D0373,C007,340.51,2023-12-05,ACH Transfer,False,Monthly donation
+DN0061,D0738,C015,171.91,2024-02-23,Check,False,Conservation project funding
+DN0062,D0568,C003,340.84,2024-01-24,Wire Transfer,False,Conservation project funding
+DN0063,D0416,C009,1867.44,2023-08-04,PayPal,False,
+DN0064,D0671,C006,235.03,2023-08-07,ACH Transfer,False,One-time contribution
+DN0065,D0675,C002,340.33,2024-09-26,Check,True,Habitat restoration support
+DN0066,D0689,C005,119.59,2023-01-26,Credit Card,False,Land acquisition support
+DN0067,D0626,C014,2549.37,2024-10-06,ACH Transfer,True,Elk research funding
+DN0068,D0507,C007,336.63,2023-01-06,Credit Card,False,Habitat restoration support
+DN0069,D0181,C013,54205.99,2023-02-21,ACH Transfer,False,Monthly donation
+DN0070,D0468,C003,3504.10,2024-07-26,ACH Transfer,False,Land acquisition support
+DN0071,D0628,C014,2771.50,2024-07-15,PayPal,False,Land acquisition support
+DN0072,D0461,C005,4279.38,2023-10-11,ACH Transfer,False,Habitat restoration support
+DN0073,D0282,C008,160.72,2023-10-06,Check,False,Emergency wildlife support
+DN0074,D0083,C003,206.94,2023-06-06,Wire Transfer,True,Elk research funding
+DN0075,D0339,C009,54.58,2024-03-06,PayPal,False,
+DN0076,D0969,C012,443.31,2024-08-12,PayPal,False,Youth education program
+DN0077,D0306,C013,448.53,2024-03-05,ACH Transfer,False,Emergency wildlife support
+DN0078,D0820,C010,2697.03,2023-10-07,PayPal,False,Elk research funding
+DN0079,D0345,C011,2319.43,2023-06-19,PayPal,False,
+DN0080,D0547,C001,61229.81,2024-11-09,Credit Card,True,Elk research funding
+DN0081,D0139,C014,48.89,2024-01-24,Check,False,Youth education program
+DN0082,D0346,C013,1752.15,2024-03-07,Check,False,Land acquisition support
+DN0083,D0020,C012,499.96,2023-12-25,Wire Transfer,False,Annual membership renewal
+DN0084,D0773,C001,23939.26,2023-01-21,ACH Transfer,True,One-time contribution
+DN0085,D0485,C011,475.18,2024-04-21,Check,False,One-time contribution
+DN0086,D0621,C010,73243.94,2023-06-17,Check,True,Annual membership renewal
+DN0087,D0952,C005,456.31,2024-01-20,PayPal,False,Habitat restoration support
+DN0088,D0078,C010,3322.59,2023-04-15,Check,False,
+DN0089,D0825,C002,3046.70,2023-02-12,Check,False,Youth education program
+DN0090,D0071,C009,556.93,2024-03-06,PayPal,True,Youth education program
+DN0091,D0651,C015,3682.89,2024-03-21,Wire Transfer,False,Conservation project funding
+DN0092,D0631,C013,78590.94,2024-04-21,PayPal,False,
+DN0093,D0275,C006,4238.29,2023-03-30,Check,False,Habitat restoration support
+DN0094,D0769,C008,342.39,2023-12-11,Credit Card,False,Youth education program
+DN0095,D0187,C008,403.97,2023-12-15,Check,False,Conservation project funding
+DN0096,D0570,C001,115.75,2023-09-05,PayPal,False,Habitat restoration support
+DN0097,D0708,C008,2708.70,2023-01-18,Credit Card,False,Elk research funding
+DN0098,D0709,C004,301.24,2024-04-29,ACH Transfer,False,Elk research funding
+DN0099,D0764,C009,358.86,2023-10-05,Check,False,Monthly donation
+DN0100,D0739,C004,377.87,2024-12-07,Wire Transfer,True,Land acquisition support
+DN0101,D0284,C012,386.10,2024-09-03,Check,False,Habitat restoration support
+DN0102,D0304,C004,168.58,2024-12-26,ACH Transfer,True,Annual membership renewal
+DN0103,D0998,C001,356.27,2023-05-10,PayPal,True,Annual membership renewal
+DN0104,D0588,C005,234.22,2023-07-08,Credit Card,False,Land acquisition support
+DN0105,D0117,C014,258.58,2024-08-13,Credit Card,True,
+DN0106,D0972,C005,142.89,2024-07-25,PayPal,False,
+DN0107,D0232,C013,238.99,2024-03-29,Check,False,Elk research funding
+DN0108,D0313,C010,3243.34,2023-04-12,Wire Transfer,False,Conservation project funding
+DN0109,D0677,C002,107.56,2023-03-18,Wire Transfer,True,Land acquisition support
+DN0110,D0706,C010,40.50,2023-10-23,Check,False,Land acquisition support
+DN0111,D0073,C011,150.66,2024-10-02,ACH Transfer,False,Habitat restoration support
+DN0112,D0436,C002,332.63,2023-09-30,Wire Transfer,True,One-time contribution
+DN0113,D0812,C005,416.51,2023-10-23,PayPal,True,Conservation project funding
+DN0114,D0717,C007,52544.86,2024-05-20,PayPal,True,Annual membership renewal
+DN0115,D0911,C007,3216.71,2023-01-27,Credit Card,False,
+DN0116,D0602,C001,68866.75,2023-10-03,ACH Transfer,True,One-time contribution
+DN0117,D0482,C009,4622.33,2023-07-05,ACH Transfer,False,Land acquisition support
+DN0118,D0993,C002,218.97,2023-11-25,Credit Card,False,Youth education program
+DN0119,D0422,C012,339.73,2024-02-15,ACH Transfer,True,Monthly donation
+DN0120,D0323,C005,485.84,2024-02-18,ACH Transfer,False,Annual membership renewal
+DN0121,D0674,C014,221.29,2023-07-12,ACH Transfer,False,Land acquisition support
+DN0122,D0641,C008,1416.01,2024-07-16,Wire Transfer,False,Land acquisition support
+DN0123,D0902,C012,38.71,2024-10-07,ACH Transfer,False,One-time contribution
+DN0124,D0319,C009,218.80,2023-08-19,Credit Card,False,Monthly donation
+DN0125,D0664,C014,468.01,2023-10-26,ACH Transfer,False,Elk research funding
+DN0126,D0855,C008,28154.44,2024-07-18,Wire Transfer,False,
+DN0127,D0521,C012,4388.12,2023-10-10,PayPal,False,Emergency wildlife support
+DN0128,D0274,C014,369.87,2024-08-24,ACH Transfer,False,Land acquisition support
+DN0129,D0887,C003,255.06,2023-12-07,ACH Transfer,False,Elk research funding
+DN0130,D0467,C015,114.61,2024-12-15,Wire Transfer,False,Habitat restoration support
+DN0131,D0877,C013,176.13,2024-04-29,PayPal,False,One-time contribution
+DN0132,D0508,C001,483.54,2023-12-06,Credit Card,False,Land acquisition support
+DN0133,D0103,C009,6458.02,2023-05-28,PayPal,False,One-time contribution
+DN0134,D0077,C008,1692.60,2024-09-30,PayPal,False,Youth education program
+DN0135,D0873,C011,2210.04,2023-11-21,PayPal,False,Annual membership renewal
+DN0136,D0633,C002,350.09,2023-10-22,Wire Transfer,False,Elk research funding
+DN0137,D0101,C013,4426.61,2024-03-30,Wire Transfer,False,Annual membership renewal
+DN0138,D0048,C006,1820.15,2024-01-19,PayPal,True,Emergency wildlife support
+DN0139,D0422,C010,1310.26,2023-06-29,Credit Card,False,Elk research funding
+DN0140,D0635,C011,458.59,2023-05-27,Wire Transfer,False,Conservation project funding
+DN0141,D0471,C005,4545.09,2024-04-21,Check,False,One-time contribution
+DN0142,D0076,C008,98826.91,2023-11-03,PayPal,False,Land acquisition support
+DN0143,D0866,C005,207.73,2024-05-09,Credit Card,False,
+DN0144,D0368,C010,357.16,2023-01-23,PayPal,False,
+DN0145,D0886,C011,4881.21,2024-09-12,PayPal,False,Conservation project funding
+DN0146,D0795,C013,405.92,2023-08-13,Wire Transfer,False,One-time contribution
+DN0147,D0644,C002,66402.36,2023-11-13,PayPal,True,Youth education program
+DN0148,D0750,C003,165.18,2024-03-01,Wire Transfer,False,Emergency wildlife support
+DN0149,D0898,C006,458.91,2023-06-18,Check,False,Land acquisition support
+DN0150,D0991,C013,438.44,2023-04-28,PayPal,False,One-time contribution
+DN0151,D0773,C004,3758.98,2024-02-11,ACH Transfer,False,Elk research funding
+DN0152,D0015,C005,241.02,2024-11-19,Check,False,Youth education program
+DN0153,D0111,C011,36.89,2024-07-28,Check,False,Habitat restoration support
+DN0154,D0664,C002,2589.20,2024-12-18,Check,False,Monthly donation
+DN0155,D0144,C001,33914.64,2024-05-19,Credit Card,True,Emergency wildlife support
+DN0156,D0139,C007,343.48,2024-12-14,ACH Transfer,False,One-time contribution
+DN0157,D0907,C007,4251.62,2024-09-22,PayPal,False,Conservation project funding
+DN0158,D0034,C012,235.61,2023-08-30,Check,True,Youth education program
+DN0159,D0558,C015,39074.01,2024-02-12,Check,True,Monthly donation
+DN0160,D0972,C014,912.53,2023-08-06,ACH Transfer,False,Annual membership renewal
+DN0161,D0806,C006,84.81,2024-08-01,Wire Transfer,True,Emergency wildlife support
+DN0162,D0213,C010,438.11,2023-12-03,Wire Transfer,False,
+DN0163,D0003,C005,1151.10,2023-05-14,ACH Transfer,False,One-time contribution
+DN0164,D0113,C011,1093.11,2024-01-02,Wire Transfer,False,Annual membership renewal
+DN0165,D0179,C005,377.32,2024-06-22,Credit Card,False,Land acquisition support
+DN0166,D0460,C013,306.99,2024-04-07,ACH Transfer,False,
+DN0167,D0045,C012,4401.41,2024-06-17,Check,False,Annual membership renewal
+DN0168,D0063,C008,2418.23,2023-04-21,PayPal,False,Land acquisition support
+DN0169,D0076,C015,313.94,2023-03-09,Wire Transfer,False,
+DN0170,D0562,C012,497.45,2024-06-27,Check,False,
+DN0171,D0441,C002,1014.86,2024-11-01,ACH Transfer,False,Habitat restoration support
+DN0172,D0441,C008,2362.16,2024-04-09,PayPal,False,Monthly donation
+DN0173,D0321,C007,146.07,2023-06-06,PayPal,True,Monthly donation
+DN0174,D0096,C007,375.93,2023-05-14,ACH Transfer,True,Emergency wildlife support
+DN0175,D0576,C006,2348.64,2024-11-12,PayPal,False,Annual membership renewal
+DN0176,D0992,C005,2082.41,2024-08-14,ACH Transfer,False,Land acquisition support
+DN0177,D0230,C014,426.55,2024-01-12,Credit Card,False,
+DN0178,D0232,C013,291.46,2024-09-28,ACH Transfer,False,Emergency wildlife support
+DN0179,D0027,C010,83798.78,2023-10-01,Credit Card,True,Conservation project funding
+DN0180,D0944,C006,111.17,2023-05-27,ACH Transfer,False,Monthly donation
+DN0181,D0146,C012,637.96,2024-06-27,Wire Transfer,False,Land acquisition support
+DN0182,D0350,C003,367.76,2024-08-04,ACH Transfer,True,Annual membership renewal
+DN0183,D0160,C003,723.93,2023-03-25,Check,False,Elk research funding
+DN0184,D0498,C010,154.75,2024-06-08,Credit Card,False,Monthly donation
+DN0185,D0291,C011,2689.85,2024-11-14,Check,True,Elk research funding
+DN0186,D0614,C001,168.17,2023-08-05,Wire Transfer,False,Conservation project funding
+DN0187,D0336,C002,379.83,2023-06-29,Wire Transfer,False,Habitat restoration support
+DN0188,D0513,C009,4127.90,2023-03-15,PayPal,False,Annual membership renewal
+DN0189,D0447,C001,61.98,2023-11-17,ACH Transfer,False,Elk research funding
+DN0190,D0727,C011,79.71,2023-01-22,Check,True,
+DN0191,D0472,C014,2128.34,2024-03-23,Credit Card,False,
+DN0192,D0411,C009,438.50,2023-12-14,Wire Transfer,False,One-time contribution
+DN0193,D0079,C009,2887.72,2023-07-18,Check,False,One-time contribution
+DN0194,D0242,C002,118.70,2024-09-08,Wire Transfer,False,Monthly donation
+DN0195,D0182,C013,2587.79,2024-07-31,ACH Transfer,False,
+DN0196,D0659,C011,35704.78,2024-10-04,Check,True,Monthly donation
+DN0197,D0481,C008,4083.48,2024-08-28,Credit Card,False,Monthly donation
+DN0198,D0318,C008,52.02,2023-10-21,Credit Card,False,Monthly donation
+DN0199,D0630,C010,244.79,2024-07-21,Credit Card,False,
+DN0200,D0668,C004,250.92,2023-06-04,Credit Card,False,Youth education program
+DN0201,D0732,C002,106.97,2023-09-11,PayPal,False,Emergency wildlife support
+DN0202,D0536,C010,202.10,2023-10-17,PayPal,False,Youth education program
+DN0203,D0696,C010,324.67,2023-12-09,Credit Card,False,Emergency wildlife support
+DN0204,D0695,C007,368.77,2024-11-03,ACH Transfer,False,Youth education program
+DN0205,D0084,C010,4625.36,2023-11-14,PayPal,True,Monthly donation
+DN0206,D0318,C009,401.04,2023-05-11,ACH Transfer,True,Elk research funding
+DN0207,D0521,C006,171.71,2023-08-08,Check,False,Land acquisition support
+DN0208,D0197,C004,19719.79,2023-10-30,Credit Card,False,Emergency wildlife support
+DN0209,D0856,C012,669.86,2023-12-11,ACH Transfer,True,Elk research funding
+DN0210,D0158,C003,354.10,2024-10-01,Wire Transfer,False,Annual membership renewal
+DN0211,D0421,C006,1568.89,2024-03-30,ACH Transfer,False,Land acquisition support
+DN0212,D0240,C009,483.66,2024-04-25,Wire Transfer,False,
+DN0213,D0452,C008,4001.56,2024-05-29,ACH Transfer,False,One-time contribution
+DN0214,D0837,C004,1122.79,2023-09-14,Credit Card,False,Youth education program
+DN0215,D0568,C015,426.80,2023-05-08,Check,True,One-time contribution
+DN0216,D0280,C008,18998.12,2024-03-23,Credit Card,False,Habitat restoration support
+DN0217,D0837,C008,4687.12,2024-02-29,Credit Card,False,Youth education program
+DN0218,D0242,C007,40616.70,2023-01-29,Check,False,Youth education program
+DN0219,D0811,C003,161.27,2024-04-28,Wire Transfer,False,Land acquisition support
+DN0220,D0460,C010,62.63,2023-09-20,Wire Transfer,False,Emergency wildlife support
+DN0221,D0963,C012,2404.65,2023-10-23,Wire Transfer,False,Annual membership renewal
+DN0222,D0245,C007,3302.65,2023-03-06,Credit Card,False,Land acquisition support
+DN0223,D0612,C009,269.80,2023-09-05,Wire Transfer,False,Annual membership renewal
+DN0224,D0630,C006,222.87,2024-11-11,Credit Card,False,Youth education program
+DN0225,D0070,C009,398.55,2024-06-03,ACH Transfer,True,Land acquisition support
+DN0226,D0045,C011,202.32,2023-01-17,Check,False,Youth education program
+DN0227,D0247,C012,966.49,2024-08-18,Check,True,Youth education program
+DN0228,D0560,C006,1287.90,2024-12-02,PayPal,False,Land acquisition support
+DN0229,D0647,C003,783.95,2024-04-13,Credit Card,False,Annual membership renewal
+DN0230,D0811,C004,1920.18,2023-11-14,ACH Transfer,False,Emergency wildlife support
+DN0231,D0485,C005,332.28,2023-10-20,Check,False,Annual membership renewal
+DN0232,D0887,C011,84.13,2024-01-12,PayPal,False,Land acquisition support
+DN0233,D0917,C007,113.74,2024-12-09,PayPal,False,Emergency wildlife support
+DN0234,D0274,C013,226.64,2024-03-16,ACH Transfer,False,One-time contribution
+DN0235,D0559,C005,63.03,2024-11-07,Check,False,
+DN0236,D0735,C007,235.86,2024-04-02,Credit Card,False,Youth education program
+DN0237,D0630,C007,490.51,2023-02-28,Credit Card,False,Elk research funding
+DN0238,D0373,C009,3557.35,2023-02-01,Wire Transfer,False,Land acquisition support
+DN0239,D0036,C003,394.79,2024-01-11,Check,False,
+DN0240,D0034,C010,238.71,2024-01-15,Check,False,Monthly donation
+DN0241,D0588,C003,214.07,2024-10-27,Check,False,Monthly donation
+DN0242,D0027,C012,270.93,2024-07-29,Credit Card,False,Conservation project funding
+DN0243,D0721,C008,315.64,2024-12-11,PayPal,False,One-time contribution
+DN0244,D0874,C002,451.87,2024-03-31,Credit Card,False,Youth education program
+DN0245,D0684,C006,2974.99,2023-10-25,Check,False,One-time contribution
+DN0246,D0813,C006,82.65,2023-07-25,Wire Transfer,False,Land acquisition support
+DN0247,D0027,C006,200.23,2024-07-18,Wire Transfer,False,Monthly donation
+DN0248,D0068,C005,365.54,2024-05-05,ACH Transfer,False,Elk research funding
+DN0249,D0844,C010,486.88,2024-10-19,Credit Card,False,Emergency wildlife support
+DN0250,D0353,C003,4011.18,2024-10-17,ACH Transfer,True,One-time contribution
+DN0251,D0444,C009,10264.22,2023-05-08,ACH Transfer,True,One-time contribution
+DN0252,D0166,C006,26419.68,2024-06-15,Check,False,Conservation project funding
+DN0253,D0202,C011,31072.85,2024-10-02,Check,False,Monthly donation
+DN0254,D0515,C011,472.26,2023-06-07,Wire Transfer,False,
+DN0255,D0346,C014,8913.46,2023-01-30,Credit Card,True,
+DN0256,D0272,C011,296.77,2024-09-24,Credit Card,False,Emergency wildlife support
+DN0257,D0297,C011,50879.76,2024-12-02,PayPal,False,Monthly donation
+DN0258,D0706,C001,222.42,2024-04-20,Wire Transfer,False,One-time contribution
+DN0259,D0321,C014,3803.90,2023-12-20,PayPal,True,Youth education program
+DN0260,D0528,C009,139.83,2023-05-06,Check,False,One-time contribution
+DN0261,D0100,C001,207.47,2024-09-22,PayPal,False,One-time contribution
+DN0262,D0834,C006,73507.20,2023-07-14,Wire Transfer,False,Emergency wildlife support
+DN0263,D0479,C008,2738.17,2023-04-03,PayPal,False,Habitat restoration support
+DN0264,D0221,C010,49.01,2024-05-21,ACH Transfer,False,Land acquisition support
+DN0265,D0293,C009,76.06,2023-05-18,Check,False,Elk research funding
+DN0266,D0375,C001,295.88,2023-07-19,Check,False,Monthly donation
+DN0267,D0396,C009,286.18,2024-09-30,ACH Transfer,True,Monthly donation
+DN0268,D0404,C006,2025.88,2024-01-10,Wire Transfer,True,Emergency wildlife support
+DN0269,D0412,C009,43.48,2024-12-31,Check,False,Emergency wildlife support
+DN0270,D0468,C003,2819.78,2023-12-02,ACH Transfer,False,Elk research funding
+DN0271,D0632,C012,3171.76,2024-06-03,ACH Transfer,False,
+DN0272,D0307,C008,2157.61,2024-11-20,Credit Card,False,
+DN0273,D0316,C013,4424.45,2024-10-06,Credit Card,False,Conservation project funding
+DN0274,D0991,C011,3992.73,2024-08-14,Wire Transfer,False,
+DN0275,D0492,C003,367.56,2024-01-25,Wire Transfer,False,Habitat restoration support
+DN0276,D0033,C010,15440.07,2023-01-20,PayPal,False,One-time contribution
+DN0277,D0423,C012,263.36,2024-09-18,PayPal,False,Annual membership renewal
+DN0278,D0723,C003,291.42,2024-11-09,PayPal,False,Youth education program
+DN0279,D0980,C003,278.24,2024-07-13,Check,False,Conservation project funding
+DN0280,D0625,C008,142.10,2024-07-25,Check,False,Conservation project funding
+DN0281,D0790,C005,3606.08,2024-05-15,Check,False,Emergency wildlife support
+DN0282,D0957,C015,1730.56,2023-05-05,ACH Transfer,False,Elk research funding
+DN0283,D0918,C007,4795.74,2023-05-30,Check,True,Monthly donation
+DN0284,D0355,C015,146.81,2024-05-05,Wire Transfer,False,Emergency wildlife support
+DN0285,D0278,C015,154.02,2023-04-22,ACH Transfer,False,Habitat restoration support
+DN0286,D0249,C001,2889.69,2024-10-15,Wire Transfer,True,Elk research funding
+DN0287,D0339,C012,348.57,2023-05-21,Credit Card,False,One-time contribution
+DN0288,D0417,C011,88447.96,2024-05-03,Wire Transfer,False,Conservation project funding
+DN0289,D0329,C005,4585.72,2023-04-02,ACH Transfer,False,Annual membership renewal
+DN0290,D0936,C015,444.07,2023-06-30,Credit Card,False,Elk research funding
+DN0291,D0807,C008,380.78,2023-10-24,Credit Card,True,
+DN0292,D0618,C002,36829.00,2024-04-10,ACH Transfer,False,One-time contribution
+DN0293,D0872,C009,116.59,2023-04-26,Check,True,Land acquisition support
+DN0294,D0664,C005,563.38,2023-12-12,Check,False,Habitat restoration support
+DN0295,D0180,C010,4536.69,2024-03-13,ACH Transfer,False,Elk research funding
+DN0296,D0686,C002,91.79,2023-11-28,Wire Transfer,True,Elk research funding
+DN0297,D0242,C008,4793.16,2023-11-06,ACH Transfer,False,Annual membership renewal
+DN0298,D0268,C011,137.24,2024-11-14,Credit Card,False,One-time contribution
+DN0299,D0416,C011,450.18,2024-12-21,Check,False,Conservation project funding
+DN0300,D0377,C010,479.75,2024-05-04,Wire Transfer,False,
+DN0301,D0383,C007,4607.59,2024-07-04,Wire Transfer,False,
+DN0302,D0895,C013,237.21,2024-12-21,Check,True,
+DN0303,D0115,C001,4563.00,2023-07-27,ACH Transfer,False,One-time contribution
+DN0304,D0336,C014,80.21,2023-07-30,ACH Transfer,False,Emergency wildlife support
+DN0305,D0457,C013,87.67,2024-03-01,PayPal,False,Emergency wildlife support
+DN0306,D0474,C011,3754.76,2024-02-10,Check,False,Habitat restoration support
+DN0307,D0593,C002,188.65,2023-03-07,ACH Transfer,False,Monthly donation
+DN0308,D0957,C008,219.21,2023-05-19,PayPal,False,Elk research funding
+DN0309,D0460,C014,40862.15,2023-03-24,ACH Transfer,True,Youth education program
+DN0310,D0122,C003,42340.57,2023-05-11,Wire Transfer,False,Annual membership renewal
+DN0311,D0306,C008,2950.00,2024-06-28,PayPal,False,Habitat restoration support
+DN0312,D0472,C006,114.53,2023-04-26,Credit Card,False,Elk research funding
+DN0313,D0630,C013,89458.93,2023-09-04,Wire Transfer,True,
+DN0314,D0035,C008,359.06,2023-02-19,Wire Transfer,False,Elk research funding
+DN0315,D0450,C004,383.33,2023-02-27,Wire Transfer,False,Conservation project funding
+DN0316,D0240,C014,59730.48,2024-08-14,ACH Transfer,False,Youth education program
+DN0317,D0243,C005,4935.63,2024-06-17,Wire Transfer,False,Conservation project funding
+DN0318,D0063,C009,88572.82,2023-06-29,PayPal,False,Annual membership renewal
+DN0319,D0996,C006,68777.54,2024-06-21,Check,False,Elk research funding
+DN0320,D0153,C005,383.35,2024-04-29,Wire Transfer,False,Conservation project funding
+DN0321,D0879,C012,244.94,2023-03-01,ACH Transfer,False,Elk research funding
+DN0322,D0571,C009,140.36,2023-07-28,Check,False,Land acquisition support
+DN0323,D0868,C006,369.18,2023-07-15,Credit Card,False,
+DN0324,D0618,C001,1346.73,2024-08-24,ACH Transfer,False,Habitat restoration support
+DN0325,D0891,C015,479.58,2023-01-16,Wire Transfer,False,Monthly donation
+DN0326,D0765,C013,140.23,2024-09-10,Wire Transfer,False,Habitat restoration support
+DN0327,D0566,C006,2212.98,2024-06-30,Check,False,Youth education program
+DN0328,D0526,C015,71.84,2024-04-25,Check,False,Youth education program
+DN0329,D0321,C007,435.44,2023-05-30,Credit Card,False,
+DN0330,D0594,C012,97.40,2023-12-04,Wire Transfer,False,Habitat restoration support
+DN0331,D0512,C009,3581.81,2023-09-21,PayPal,False,Land acquisition support
+DN0332,D0472,C003,2084.79,2023-05-24,ACH Transfer,False,Emergency wildlife support
+DN0333,D0658,C001,423.56,2023-03-18,Credit Card,False,Elk research funding
+DN0334,D0141,C014,805.86,2023-06-04,Credit Card,False,Land acquisition support
+DN0335,D0383,C001,3500.40,2024-09-23,PayPal,False,Annual membership renewal
+DN0336,D0007,C009,30.63,2024-06-26,Check,False,Conservation project funding
+DN0337,D0018,C009,3533.15,2023-07-03,Credit Card,False,Emergency wildlife support
+DN0338,D0153,C004,275.07,2023-12-29,Check,False,Monthly donation
+DN0339,D0383,C007,140.52,2024-12-14,Wire Transfer,False,Monthly donation
+DN0340,D0670,C014,642.58,2024-02-20,PayPal,False,Land acquisition support
+DN0341,D0058,C011,106.41,2024-05-26,PayPal,False,Youth education program
+DN0342,D0580,C014,90005.17,2023-02-13,Wire Transfer,False,
+DN0343,D0487,C005,60.32,2023-10-15,ACH Transfer,False,Annual membership renewal
+DN0344,D0184,C015,570.46,2023-08-01,ACH Transfer,True,Elk research funding
+DN0345,D0952,C002,292.88,2024-08-03,PayPal,False,Emergency wildlife support
+DN0346,D0340,C007,1129.78,2024-12-06,Credit Card,False,Youth education program
+DN0347,D0055,C002,423.37,2023-12-15,ACH Transfer,False,
+DN0348,D0407,C013,326.21,2024-04-06,PayPal,False,Emergency wildlife support
+DN0349,D0964,C007,347.86,2024-11-07,PayPal,True,
+DN0350,D0303,C013,59.92,2023-10-02,Wire Transfer,False,One-time contribution
+DN0351,D0758,C007,75.61,2023-01-06,Check,False,Conservation project funding
+DN0352,D0105,C003,229.72,2024-07-24,ACH Transfer,False,Monthly donation
+DN0353,D0027,C002,69.21,2024-09-04,Check,False,Annual membership renewal
+DN0354,D0299,C007,65.23,2024-07-26,Wire Transfer,False,One-time contribution
+DN0355,D0702,C007,152.74,2023-10-02,PayPal,True,One-time contribution
+DN0356,D0446,C005,255.01,2023-03-20,Check,False,Habitat restoration support
+DN0357,D0739,C011,317.92,2024-04-13,Credit Card,True,Annual membership renewal
+DN0358,D0972,C007,319.59,2023-12-04,PayPal,False,
+DN0359,D0140,C005,474.96,2023-07-25,PayPal,False,Elk research funding
+DN0360,D0992,C006,355.10,2024-05-17,ACH Transfer,False,Youth education program
+DN0361,D0386,C005,2268.21,2023-04-27,ACH Transfer,True,Emergency wildlife support
+DN0362,D0185,C011,621.12,2024-04-17,Wire Transfer,False,Conservation project funding
+DN0363,D0852,C012,427.70,2024-02-23,PayPal,True,Conservation project funding
+DN0364,D0248,C005,3718.56,2024-01-22,Credit Card,False,
+DN0365,D0491,C010,265.64,2024-12-09,PayPal,False,Youth education program
+DN0366,D0719,C015,3172.19,2023-03-29,Credit Card,False,Youth education program
+DN0367,D0171,C011,3034.49,2024-10-22,PayPal,False,Youth education program
+DN0368,D0989,C013,30.01,2023-09-22,Wire Transfer,False,Emergency wildlife support
+DN0369,D0572,C010,1494.64,2024-01-19,PayPal,False,
+DN0370,D0708,C009,498.91,2024-05-09,Credit Card,False,Monthly donation
+DN0371,D0119,C014,18459.14,2023-11-16,Check,False,Habitat restoration support
+DN0372,D0534,C008,71.37,2024-12-14,PayPal,False,Conservation project funding
+DN0373,D0046,C013,601.63,2023-12-18,Credit Card,False,One-time contribution
+DN0374,D0953,C012,107.87,2023-06-13,Check,False,Land acquisition support
+DN0375,D0238,C013,112.61,2024-10-17,PayPal,False,
+DN0376,D0905,C004,229.04,2023-01-05,Wire Transfer,False,Monthly donation
+DN0377,D0592,C002,2916.00,2024-01-10,Check,True,Monthly donation
+DN0378,D0269,C011,2874.72,2024-10-16,Check,False,
+DN0379,D0402,C010,192.19,2024-04-13,ACH Transfer,True,Conservation project funding
+DN0380,D0941,C010,344.25,2023-11-17,Credit Card,False,Monthly donation
+DN0381,D0188,C006,2798.71,2024-03-04,ACH Transfer,True,Elk research funding
+DN0382,D0434,C003,280.26,2024-10-22,Wire Transfer,False,Land acquisition support
+DN0383,D0296,C003,424.94,2024-09-26,Credit Card,False,Annual membership renewal
+DN0384,D0497,C003,207.37,2024-07-29,ACH Transfer,False,Elk research funding
+DN0385,D0702,C008,423.95,2024-05-15,Wire Transfer,True,Annual membership renewal
+DN0386,D0815,C013,40.53,2023-08-19,ACH Transfer,False,Land acquisition support
+DN0387,D0580,C012,2728.91,2024-06-07,Credit Card,False,Conservation project funding
+DN0388,D0794,C009,2150.88,2023-02-12,PayPal,False,Elk research funding
+DN0389,D0105,C012,3881.05,2023-11-01,Credit Card,False,Youth education program
+DN0390,D0883,C014,436.01,2023-05-01,Wire Transfer,False,
+DN0391,D0706,C006,3246.18,2024-03-14,Wire Transfer,False,Habitat restoration support
+DN0392,D0834,C004,3065.33,2024-06-29,Check,False,One-time contribution
+DN0393,D0332,C012,297.05,2024-06-10,Credit Card,True,Elk research funding
+DN0394,D0941,C001,87369.52,2023-05-10,Wire Transfer,False,Youth education program
+DN0395,D0849,C004,3543.06,2024-05-16,Wire Transfer,False,Conservation project funding
+DN0396,D0643,C007,60.87,2023-04-06,PayPal,False,Conservation project funding
+DN0397,D0712,C015,2546.13,2024-05-14,Check,False,Monthly donation
+DN0398,D0749,C008,3637.80,2023-03-06,ACH Transfer,False,Elk research funding
+DN0399,D0845,C004,178.36,2023-10-18,Check,False,One-time contribution
+DN0400,D0580,C014,188.28,2024-11-29,Credit Card,True,Land acquisition support
+DN0401,D0017,C002,20008.43,2024-04-12,Credit Card,False,Elk research funding
+DN0402,D0208,C012,88804.04,2023-11-06,Wire Transfer,False,Conservation project funding
+DN0403,D0096,C011,64.15,2024-11-11,Wire Transfer,True,Conservation project funding
+DN0404,D0744,C012,2431.54,2023-04-04,Credit Card,True,Land acquisition support
+DN0405,D0080,C003,271.74,2024-03-31,Credit Card,True,Youth education program
+DN0406,D0837,C002,45119.82,2023-05-16,PayPal,True,Elk research funding
+DN0407,D0092,C012,964.41,2024-01-12,Check,True,One-time contribution
+DN0408,D0657,C011,276.99,2023-01-09,ACH Transfer,False,Land acquisition support
+DN0409,D0360,C012,380.43,2024-02-26,ACH Transfer,False,Habitat restoration support
+DN0410,D0089,C015,382.41,2024-08-26,PayPal,False,Elk research funding
+DN0411,D0323,C013,156.56,2023-03-28,Wire Transfer,False,
+DN0412,D0739,C010,472.11,2023-01-28,Check,False,
+DN0413,D0522,C004,1829.94,2023-02-25,Wire Transfer,False,Monthly donation
+DN0414,D0247,C008,819.55,2023-01-13,Check,False,One-time contribution
+DN0415,D0397,C014,2393.89,2024-07-13,Wire Transfer,False,Monthly donation
+DN0416,D0018,C010,149.54,2023-02-10,Credit Card,False,Elk research funding
+DN0417,D0519,C005,2754.72,2024-03-01,PayPal,False,Monthly donation
+DN0418,D0656,C009,97.52,2023-03-27,Check,True,Habitat restoration support
+DN0419,D0998,C013,180.21,2024-08-23,Credit Card,False,Elk research funding
+DN0420,D0748,C014,141.13,2024-03-20,Credit Card,False,
+DN0421,D0057,C005,3461.24,2023-06-29,Credit Card,True,One-time contribution
+DN0422,D0719,C001,477.68,2024-06-19,ACH Transfer,False,Conservation project funding
+DN0423,D0171,C006,396.03,2023-10-03,Credit Card,False,Annual membership renewal
+DN0424,D0344,C013,273.83,2023-09-27,ACH Transfer,False,Land acquisition support
+DN0425,D0467,C009,262.31,2024-08-03,Wire Transfer,False,Conservation project funding
+DN0426,D0792,C002,3533.54,2023-04-29,Wire Transfer,False,Annual membership renewal
+DN0427,D0046,C014,1600.48,2024-04-28,Check,False,One-time contribution
+DN0428,D0184,C015,8359.54,2024-11-02,PayPal,False,Habitat restoration support
+DN0429,D0427,C015,1720.66,2023-03-21,ACH Transfer,False,Emergency wildlife support
+DN0430,D0690,C015,131.01,2024-06-12,Credit Card,False,Monthly donation
+DN0431,D0899,C008,3980.87,2023-11-15,Check,True,Land acquisition support
+DN0432,D0009,C006,292.81,2023-11-08,ACH Transfer,False,Youth education program
+DN0433,D0606,C008,78709.17,2024-07-13,Wire Transfer,True,Elk research funding
+DN0434,D0025,C004,327.07,2024-12-11,Credit Card,False,Annual membership renewal
+DN0435,D0778,C011,375.59,2023-11-11,Credit Card,False,Habitat restoration support
+DN0436,D0430,C008,97393.13,2023-05-26,Check,True,Habitat restoration support
+DN0437,D0919,C014,357.90,2024-01-17,PayPal,False,Monthly donation
+DN0438,D0595,C002,327.68,2024-02-08,Credit Card,False,Annual membership renewal
+DN0439,D0446,C011,27493.31,2023-09-25,Check,False,Elk research funding
+DN0440,D0718,C014,1931.26,2023-10-06,Wire Transfer,True,Habitat restoration support
+DN0441,D0140,C013,990.38,2023-04-19,Wire Transfer,False,Youth education program
+DN0442,D0417,C002,483.20,2023-08-01,PayPal,False,Conservation project funding
+DN0443,D0873,C002,408.61,2023-11-08,ACH Transfer,True,Youth education program
+DN0444,D0152,C002,4857.80,2024-02-10,ACH Transfer,True,Conservation project funding
+DN0445,D0267,C014,7952.80,2024-02-19,PayPal,False,Emergency wildlife support
+DN0446,D0256,C002,406.85,2023-05-24,Credit Card,True,Habitat restoration support
+DN0447,D0134,C004,2175.08,2024-10-07,Credit Card,False,Conservation project funding
+DN0448,D0940,C014,498.65,2023-07-22,PayPal,False,Monthly donation
+DN0449,D0927,C014,1991.97,2023-02-13,PayPal,True,
+DN0450,D0444,C014,2732.57,2024-01-27,PayPal,True,Habitat restoration support
+DN0451,D0931,C003,236.86,2023-06-02,Credit Card,False,
+DN0452,D0252,C011,220.70,2024-07-17,PayPal,True,Conservation project funding
+DN0453,D0393,C003,330.26,2024-06-22,Wire Transfer,False,Emergency wildlife support
+DN0454,D0814,C001,79282.00,2024-01-03,PayPal,False,Land acquisition support
+DN0455,D0353,C015,177.76,2023-10-04,Wire Transfer,True,
+DN0456,D0225,C001,4003.42,2023-03-01,PayPal,False,
+DN0457,D0239,C003,337.01,2023-09-30,ACH Transfer,False,Annual membership renewal
+DN0458,D0783,C004,491.77,2024-02-02,Check,False,One-time contribution
+DN0459,D0181,C004,407.95,2024-12-15,Check,False,Annual membership renewal
+DN0460,D0721,C012,294.63,2023-05-26,ACH Transfer,False,Land acquisition support
+DN0461,D0556,C005,43.03,2023-02-27,Wire Transfer,False,Annual membership renewal
+DN0462,D0540,C008,461.00,2023-07-26,Wire Transfer,False,One-time contribution
+DN0463,D0941,C013,1956.15,2023-01-23,Wire Transfer,False,One-time contribution
+DN0464,D0793,C002,4373.01,2023-03-16,Check,False,Elk research funding
+DN0465,D0601,C002,178.24,2023-06-11,PayPal,False,Land acquisition support
+DN0466,D0665,C006,485.15,2024-12-11,ACH Transfer,False,Habitat restoration support
+DN0467,D0682,C010,2202.73,2024-12-06,Check,True,Annual membership renewal
+DN0468,D0972,C012,42202.14,2024-08-04,Credit Card,True,Youth education program
+DN0469,D0944,C013,25985.05,2024-08-02,Credit Card,False,One-time contribution
+DN0470,D0340,C012,189.73,2023-11-24,Wire Transfer,False,Monthly donation
+DN0471,D0842,C012,3781.79,2023-12-10,PayPal,True,Habitat restoration support
+DN0472,D0256,C012,146.91,2023-04-21,Credit Card,True,Land acquisition support
+DN0473,D0751,C007,89032.44,2024-05-19,PayPal,False,Elk research funding
+DN0474,D0104,C014,435.42,2024-10-28,Wire Transfer,True,Monthly donation
+DN0475,D0819,C014,34.54,2023-09-25,Credit Card,True,One-time contribution
+DN0476,D0910,C007,60.63,2023-04-06,Check,False,
+DN0477,D0915,C008,2440.96,2024-10-31,Wire Transfer,False,Elk research funding
+DN0478,D0161,C001,122.64,2023-07-14,PayPal,False,Emergency wildlife support
+DN0479,D0272,C011,137.84,2023-02-20,PayPal,False,Land acquisition support
+DN0480,D0158,C001,228.11,2023-10-29,ACH Transfer,False,Monthly donation
+DN0481,D0027,C004,163.61,2023-03-25,PayPal,False,Conservation project funding
+DN0482,D0804,C007,450.07,2023-09-29,Credit Card,False,Elk research funding
+DN0483,D0190,C006,2162.31,2024-04-01,Credit Card,False,Land acquisition support
+DN0484,D0270,C004,3039.11,2023-06-04,Credit Card,True,Youth education program
+DN0485,D0828,C009,384.32,2023-08-21,ACH Transfer,True,Elk research funding
+DN0486,D0839,C009,279.37,2024-05-01,ACH Transfer,False,Land acquisition support
+DN0487,D0307,C002,430.62,2023-02-05,ACH Transfer,False,Emergency wildlife support
+DN0488,D0820,C010,3291.23,2023-05-04,PayPal,True,One-time contribution
+DN0489,D0996,C004,1067.84,2024-03-09,Credit Card,False,Elk research funding
+DN0490,D0207,C014,4253.49,2023-09-22,Check,False,Monthly donation
+DN0491,D0090,C007,287.23,2023-10-10,ACH Transfer,False,Annual membership renewal
+DN0492,D0806,C012,2851.53,2024-03-05,Credit Card,False,One-time contribution
+DN0493,D0581,C010,483.30,2023-04-13,Credit Card,False,Monthly donation
+DN0494,D0805,C005,4460.61,2024-02-25,Check,False,Land acquisition support
+DN0495,D0586,C010,106.79,2024-02-17,Wire Transfer,False,Elk research funding
+DN0496,D0040,C007,1991.72,2023-09-01,Credit Card,False,Conservation project funding
+DN0497,D0919,C006,413.26,2023-11-07,Check,False,Land acquisition support
+DN0498,D0879,C012,4876.23,2023-08-22,Wire Transfer,False,Land acquisition support
+DN0499,D0793,C014,371.18,2024-09-11,Credit Card,True,Habitat restoration support
+DN0500,D0936,C014,255.12,2024-06-12,Check,False,Emergency wildlife support
