@@ -122,10 +122,12 @@ def main():
         st.info("Please run the ETL pipeline first: `python pipelines/etl_pipeline.py`")
         return
     
-    # Render sidebar filters
-    donations_df, elk_df, habitat_df = render_sidebar(donations_df, elk_df, habitat_df)
+    # Render sidebar filters (returns filtered dataframes)
+    donations_df, elk_df, habitat_df, membership_df, conservation_df = render_sidebar(
+        donations_df, elk_df, habitat_df, membership_df, conservation_df
+    )
     
-    # Render KPIs
+    # Render KPIs (now using filtered data)
     render_kpis(donations_df, membership_df, elk_df, conservation_df)
     
     # Render main components
