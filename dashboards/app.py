@@ -135,6 +135,86 @@ st.markdown("""
         margin: 1.5rem 0 1rem 0;
     }
     
+    /* Popover button - force white background always */
+    button[data-testid="baseButton-secondary"] {
+        background-color: white !important;
+        background: white !important;
+        color: #212121 !important;
+        border: 1px solid #d6d7d9 !important;
+        padding: 0.35rem 0.75rem !important;
+        border-radius: 4px !important;
+        font-weight: 400 !important;
+        font-size: 0.875rem !important;
+        box-shadow: none !important;
+        transition: none !important;
+    }
+    
+    button[data-testid="baseButton-secondary"]:hover,
+    button[data-testid="baseButton-secondary"]:focus,
+    button[data-testid="baseButton-secondary"]:active,
+    button[data-testid="baseButton-secondary"]:visited,
+    button[data-testid="baseButton-secondary"][aria-expanded="true"] {
+        background-color: white !important;
+        background: white !important;
+        color: #212121 !important;
+        border: 1px solid #d6d7d9 !important;
+        box-shadow: none !important;
+    }
+    
+    /* Popover dropdown - target all nested containers */
+    [data-testid="stPopover"],
+    [data-testid="stPopover"] > div,
+    [data-testid="stPopover"] > div > div,
+    [data-testid="stPopover"] > div > div > div,
+    [data-testid="stPopover"] [data-testid="stVerticalBlock"],
+    [data-testid="stPopover"] [data-testid="stVerticalBlock"] > div,
+    [data-testid="stPopover"] [data-testid="stVerticalBlockBorderWrapper"],
+    [data-testid="stPopover"] [data-testid="element-container"],
+    [data-testid="stPopover"] [data-testid="column"],
+    [data-testid="stPopover"] [class*="st"],
+    [data-testid="stPopover"] * {
+        background-color: white !important;
+        background-image: none !important;
+        background: white !important;
+    }
+    
+    [data-testid="stPopover"] > div {
+        border: 1px solid #d6d7d9 !important;
+        border-radius: 4px !important;
+        padding: 0.75rem !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        min-width: 200px !important;
+    }
+    
+    /* Force all text elements to dark color */
+    [data-testid="stPopover"] *,
+    [data-testid="stPopover"] p,
+    [data-testid="stPopover"] span,
+    [data-testid="stPopover"] div,
+    [data-testid="stPopover"] label,
+    [data-testid="stPopover"] input {
+        color: #212121 !important;
+    }
+    
+    [data-testid="stPopover"] [data-testid="stMarkdownContainer"] p {
+        margin: 0 0 0.5rem 0 !important;
+        font-size: 0.875rem !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Checkbox styling */
+    [data-testid="stPopover"] .stCheckbox,
+    [data-testid="stPopover"] .stCheckbox > div,
+    [data-testid="stPopover"] .stCheckbox > label {
+        padding: 0.25rem 0 !important;
+        margin: 0 !important;
+    }
+    
+    [data-testid="stPopover"] .stCheckbox label {
+        color: #212121 !important;
+        font-size: 0.875rem !important;
+    }
+    
     /* Sidebar - match dashboard theme */
     section[data-testid="stSidebar"] {
         background-color: #112e51 !important;
@@ -703,11 +783,13 @@ def main():
             donations_display = donations_df.copy()
             donations_display['donor_name'] = donations_display['first_name'] + ' ' + donations_display['last_name']
             
-            selected_cols = st.multiselect(
-                "Select columns to display:",
-                options=list(all_donation_cols.keys()),
-                default=['Donation Date', 'Donor Type', 'Campaign Name', 'Amount', 'Payment Method']
-            )
+            # Column selector with popover
+            with st.popover("Columns", use_container_width=False):
+                st.write("Select columns to display:")
+                selected_cols = []
+                for col_name in all_donation_cols.keys():
+                    if st.checkbox(col_name, value=col_name in ['Donation Date', 'Donor Type', 'Campaign Name', 'Amount', 'Payment Method'], key=f'don_{col_name}'):
+                        selected_cols.append(col_name)
             
             if selected_cols:
                 display_cols = [all_donation_cols[col] for col in selected_cols]
@@ -722,7 +804,9 @@ def main():
                 # Clean column names (remove underscores, title case)
                 recent_donations.columns = [col.replace('_', ' ').title() for col in recent_donations.columns]
                 
-                st.dataframe(recent_donations, use_container_width=True, hide_index=True)
+                st.dataframe(recent_donations, use_container_width=True, hide_index=True, height=400, column_config=None)
+            else:
+                st.info("Please select at least one column to display.")
         
         with tab2:
             st.subheader("Donor Directory")
@@ -739,12 +823,13 @@ def main():
                 'Join Date': 'join_date'
             }
             
-            selected_donor_cols = st.multiselect(
-                "Select columns to display:",
-                options=list(all_donor_cols.keys()),
-                default=['First Name', 'Last Name', 'Donor Type', 'Membership Level', 'State'],
-                key='donor_cols'
-            )
+            # Column selector with popover
+            with st.popover("Columns", use_container_width=False):
+                st.write("Select columns to display:")
+                selected_donor_cols = []
+                for col_name in all_donor_cols.keys():
+                    if st.checkbox(col_name, value=col_name in ['First Name', 'Last Name', 'Donor Type', 'Membership Level', 'State'], key=f'donor_{col_name}'):
+                        selected_donor_cols.append(col_name)
             
             if selected_donor_cols:
                 display_cols = [all_donor_cols[col] for col in selected_donor_cols]
@@ -757,7 +842,9 @@ def main():
                 # Clean column names
                 donors_display.columns = [col.replace('_', ' ').title() for col in donors_display.columns]
                 
-                st.dataframe(donors_display, use_container_width=True, hide_index=True)
+                st.dataframe(donors_display, use_container_width=True, hide_index=True, height=400, column_config=None)
+            else:
+                st.info("Please select at least one column to display.")
     
         with tab3:
             st.subheader("Conservation Projects")
@@ -774,12 +861,13 @@ def main():
                 'Elk Population Impacted': 'elk_population_impacted'
             }
             
-            selected_project_cols = st.multiselect(
-                "Select columns to display:",
-                options=list(all_project_cols.keys()),
-                default=['Project Name', 'Project Type', 'State', 'Status', 'Budget', 'Acres Protected'],
-                key='project_cols'
-            )
+            # Column selector with popover
+            with st.popover("Columns", use_container_width=False):
+                st.write("Select columns to display:")
+                selected_project_cols = []
+                for col_name in all_project_cols.keys():
+                    if st.checkbox(col_name, value=col_name in ['Project Name', 'Project Type', 'State', 'Status', 'Budget', 'Acres Protected'], key=f'proj_{col_name}'):
+                        selected_project_cols.append(col_name)
             
             if selected_project_cols:
                 display_cols = [all_project_cols[col] for col in selected_project_cols]
@@ -794,7 +882,9 @@ def main():
                 # Clean column names
                 projects_display.columns = [col.replace('_', ' ').title() for col in projects_display.columns]
                 
-                st.dataframe(projects_display, use_container_width=True, hide_index=True)
+                st.dataframe(projects_display, use_container_width=True, hide_index=True, height=400, column_config=None)
+            else:
+                st.info("Please select at least one column to display.")
         
         with tab4:
             st.subheader("Habitat Status")
@@ -809,12 +899,13 @@ def main():
                 'Conservation Status': 'conservation_status'
             }
             
-            selected_habitat_cols = st.multiselect(
-                "Select columns to display:",
-                options=list(all_habitat_cols.keys()),
-                default=['Habitat Name', 'State', 'Region', 'Quality Score', 'Conservation Status'],
-                key='habitat_cols'
-            )
+            # Column selector with popover
+            with st.popover("Columns", use_container_width=False):
+                st.write("Select columns to display:")
+                selected_habitat_cols = []
+                for col_name in all_habitat_cols.keys():
+                    if st.checkbox(col_name, value=col_name in ['Habitat Name', 'State', 'Region', 'Quality Score', 'Conservation Status'], key=f'hab_{col_name}'):
+                        selected_habitat_cols.append(col_name)
             
             if selected_habitat_cols:
                 display_cols = [all_habitat_cols[col] for col in selected_habitat_cols]
@@ -827,7 +918,9 @@ def main():
                 # Clean column names
                 habitat_display.columns = [col.replace('_', ' ').title() for col in habitat_display.columns]
                 
-                st.dataframe(habitat_display, use_container_width=True, hide_index=True)
+                st.dataframe(habitat_display, use_container_width=True, hide_index=True, height=400, column_config=None)
+            else:
+                st.info("Please select at least one column to display.")
         
         with tab5:
             st.subheader("Anomaly Detection")
