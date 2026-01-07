@@ -270,8 +270,20 @@ st.markdown("""
 
 @st.cache_resource
 def get_db_connection():
-    """Create database connection"""
+    """Create database connection and ensure database exists"""
     db_path = Path(__file__).parent.parent / "data" / "rmef_analytics.db"
+    
+    # Run ETL pipeline if database doesn't exist
+    if not db_path.exists():
+        st.info("Database not found. Running ETL pipeline to generate data...")
+        try:
+            from pipelines.etl_pipeline import main as run_etl
+            run_etl()
+            st.success("ETL pipeline completed successfully!")
+        except Exception as e:
+            st.error(f"Error running ETL pipeline: {e}")
+            raise
+    
     return create_engine(f"sqlite:///{db_path}")
 
 
