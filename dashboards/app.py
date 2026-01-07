@@ -679,35 +679,155 @@ def main():
     
     # Detailed Tables Section - Collapsible
     with st.expander("Detailed Data Views", expanded=False):
-        tab1, tab2, tab3, tab4 = st.tabs(["Recent Donations", "Conservation Projects", "Habitat Status", "Anomalies"])
+        tab1, tab2, tab3, tab4, tab5 = st.tabs(["Recent Donations", "Donors", "Conservation Projects", "Habitat Status", "Anomalies"])
         
         with tab1:
-            recent_donations = donations_df.nlargest(20, 'donation_date')[
-                ['donation_date', 'donor_type', 'campaign_name', 'amount', 'payment_method', 'is_recurring']
-            ].copy()
-            recent_donations['donation_date'] = recent_donations['donation_date'].dt.strftime('%Y-%m-%d')
-            recent_donations['amount'] = recent_donations['amount'].apply(lambda x: f"${x:,.2f}")
-            st.dataframe(recent_donations, use_container_width=True, hide_index=True)
-    
-        with tab2:
-            projects_display = conservation_df[[
-                'project_name', 'project_type', 'state', 'status', 
-                'budget', 'spent_to_date', 'acres_protected', 'elk_population_impacted'
-            ]].copy()
-            projects_display['budget'] = projects_display['budget'].apply(lambda x: f"${x:,.0f}")
-            projects_display['spent_to_date'] = projects_display['spent_to_date'].apply(lambda x: f"${x:,.0f}")
-            st.dataframe(projects_display, use_container_width=True, hide_index=True)
+            st.subheader("Recent Donations")
+            
+            # Column selector
+            all_donation_cols = {
+                'Donation Date': 'donation_date',
+                'Donor Type': 'donor_type',
+                'Donor Name': 'donor_name',
+                'Campaign Name': 'campaign_name',
+                'Amount': 'amount',
+                'Payment Method': 'payment_method',
+                'Recurring': 'is_recurring',
+                'State': 'donor_state'
+            }
+            
+            # Add donor name column
+            donations_display = donations_df.copy()
+            donations_display['donor_name'] = donations_display['first_name'] + ' ' + donations_display['last_name']
+            
+            selected_cols = st.multiselect(
+                "Select columns to display:",
+                options=list(all_donation_cols.keys()),
+                default=['Donation Date', 'Donor Type', 'Campaign Name', 'Amount', 'Payment Method']
+            )
+            
+            if selected_cols:
+                display_cols = [all_donation_cols[col] for col in selected_cols]
+                recent_donations = donations_display.nlargest(20, 'donation_date')[display_cols].copy()
+                
+                # Format columns
+                if 'donation_date' in display_cols:
+                    recent_donations['donation_date'] = recent_donations['donation_date'].dt.strftime('%Y-%m-%d')
+                if 'amount' in display_cols:
+                    recent_donations['amount'] = recent_donations['amount'].apply(lambda x: f"${x:,.2f}")
+                
+                # Clean column names (remove underscores, title case)
+                recent_donations.columns = [col.replace('_', ' ').title() for col in recent_donations.columns]
+                
+                st.dataframe(recent_donations, use_container_width=True, hide_index=True)
         
+        with tab2:
+            st.subheader("Donor Directory")
+            
+            # Column selector for donors
+            all_donor_cols = {
+                'Donor ID': 'donor_id',
+                'First Name': 'first_name',
+                'Last Name': 'last_name',
+                'Email': 'email',
+                'Donor Type': 'donor_type',
+                'Membership Level': 'membership_level',
+                'State': 'state',
+                'Join Date': 'join_date'
+            }
+            
+            selected_donor_cols = st.multiselect(
+                "Select columns to display:",
+                options=list(all_donor_cols.keys()),
+                default=['First Name', 'Last Name', 'Donor Type', 'Membership Level', 'State'],
+                key='donor_cols'
+            )
+            
+            if selected_donor_cols:
+                display_cols = [all_donor_cols[col] for col in selected_donor_cols]
+                donors_display = membership_df[display_cols].copy()
+                
+                # Format join date if selected
+                if 'join_date' in display_cols:
+                    donors_display['join_date'] = pd.to_datetime(donors_display['join_date']).dt.strftime('%Y-%m-%d')
+                
+                # Clean column names
+                donors_display.columns = [col.replace('_', ' ').title() for col in donors_display.columns]
+                
+                st.dataframe(donors_display, use_container_width=True, hide_index=True)
+    
         with tab3:
-            habitat_display = habitat_df[[
-                'habitat_name', 'state', 'region', 'total_acres', 
-                'habitat_quality_score', 'conservation_status'
-            ]].copy()
-            habitat_display['total_acres'] = habitat_display['total_acres'].apply(lambda x: f"{x:,}")
-            st.dataframe(habitat_display, use_container_width=True, hide_index=True)
+            st.subheader("Conservation Projects")
+            
+            # Column selector for projects
+            all_project_cols = {
+                'Project Name': 'project_name',
+                'Project Type': 'project_type',
+                'State': 'state',
+                'Status': 'status',
+                'Budget': 'budget',
+                'Spent To Date': 'spent_to_date',
+                'Acres Protected': 'acres_protected',
+                'Elk Population Impacted': 'elk_population_impacted'
+            }
+            
+            selected_project_cols = st.multiselect(
+                "Select columns to display:",
+                options=list(all_project_cols.keys()),
+                default=['Project Name', 'Project Type', 'State', 'Status', 'Budget', 'Acres Protected'],
+                key='project_cols'
+            )
+            
+            if selected_project_cols:
+                display_cols = [all_project_cols[col] for col in selected_project_cols]
+                projects_display = conservation_df[display_cols].copy()
+                
+                # Format currency columns
+                if 'budget' in display_cols:
+                    projects_display['budget'] = projects_display['budget'].apply(lambda x: f"${x:,.0f}")
+                if 'spent_to_date' in display_cols:
+                    projects_display['spent_to_date'] = projects_display['spent_to_date'].apply(lambda x: f"${x:,.0f}")
+                
+                # Clean column names
+                projects_display.columns = [col.replace('_', ' ').title() for col in projects_display.columns]
+                
+                st.dataframe(projects_display, use_container_width=True, hide_index=True)
         
         with tab4:
-            st.markdown("### Anomaly Detection")
+            st.subheader("Habitat Status")
+            
+            # Column selector for habitat
+            all_habitat_cols = {
+                'Habitat Name': 'habitat_name',
+                'State': 'state',
+                'Region': 'region',
+                'Total Acres': 'total_acres',
+                'Quality Score': 'habitat_quality_score',
+                'Conservation Status': 'conservation_status'
+            }
+            
+            selected_habitat_cols = st.multiselect(
+                "Select columns to display:",
+                options=list(all_habitat_cols.keys()),
+                default=['Habitat Name', 'State', 'Region', 'Quality Score', 'Conservation Status'],
+                key='habitat_cols'
+            )
+            
+            if selected_habitat_cols:
+                display_cols = [all_habitat_cols[col] for col in selected_habitat_cols]
+                habitat_display = habitat_df[display_cols].copy()
+                
+                # Format acres
+                if 'total_acres' in display_cols:
+                    habitat_display['total_acres'] = habitat_display['total_acres'].apply(lambda x: f"{x:,}")
+                
+                # Clean column names
+                habitat_display.columns = [col.replace('_', ' ').title() for col in habitat_display.columns]
+                
+                st.dataframe(habitat_display, use_container_width=True, hide_index=True)
+        
+        with tab5:
+            st.subheader("Anomaly Detection")
             
             # Large donations
             large_donations = donations_df[donations_df['amount'] > 10000][
@@ -716,23 +836,36 @@ def main():
             large_donations['donation_date'] = large_donations['donation_date'].dt.strftime('%Y-%m-%d')
             large_donations['amount'] = large_donations['amount'].apply(lambda x: f"${x:,.2f}")
             
+            # Clean column names
+            large_donations.columns = [col.replace('_', ' ').title() for col in large_donations.columns]
+            
             if len(large_donations) > 0:
                 st.markdown("**Large Donations (>$10,000)**")
                 st.dataframe(large_donations, use_container_width=True, hide_index=True)
             
             # At-risk habitats
-            at_risk = habitat_df[habitat_df['conservation_status'] == 'At Risk']
+            at_risk = habitat_df[habitat_df['conservation_status'] == 'At Risk'][
+                ['habitat_name', 'state', 'habitat_quality_score', 'conservation_status']
+            ].copy()
+            
+            # Clean column names
+            at_risk.columns = [col.replace('_', ' ').title() for col in at_risk.columns]
+            
             if len(at_risk) > 0:
                 st.markdown("**At-Risk Habitats**")
-                st.dataframe(at_risk[['habitat_name', 'state', 'habitat_quality_score', 'conservation_status']], 
-                            use_container_width=True, hide_index=True)
+                st.dataframe(at_risk, use_container_width=True, hide_index=True)
             
             # Population declines
-            declining = elk_df[elk_df['population_change'] < 0]
+            declining = elk_df[elk_df['population_change'] < 0][
+                ['habitat_name', 'year', 'elk_count', 'population_change', 'population_change_pct']
+            ].copy()
+            
+            # Clean column names
+            declining.columns = [col.replace('_', ' ').title() for col in declining.columns]
+            
             if len(declining) > 0:
                 st.markdown("**Habitats with Population Decline**")
-                decline_display = declining[['habitat_name', 'year', 'elk_count', 'population_change', 'population_change_pct']]
-                st.dataframe(decline_display, use_container_width=True, hide_index=True)
+                st.dataframe(declining, use_container_width=True, hide_index=True)
     
     # Footer - analytics.usa.gov style
     st.markdown(
