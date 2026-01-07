@@ -44,9 +44,17 @@ st.markdown("""
         padding: 1.5rem 2rem;
         margin: -1rem -1rem 1.5rem -1rem;
         text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
     }
     
-    .header-banner h1 {
+    .header-banner img {
+        height: 80px;
+        width: auto;
+    }
+    
+    .header-banner .header-text h1 {
         color: white !important;
         font-size: 2rem;
         font-weight: 700;
@@ -54,7 +62,7 @@ st.markdown("""
         font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
     
-    .header-banner p {
+    .header-banner .header-text p {
         color: #aeb0b5;
         margin: 0.25rem 0 0 0;
         font-size: 1rem;
@@ -396,22 +404,26 @@ def main():
     # Header banner - analytics.usa.gov style with logo
     logo_path = Path(__file__).parent.parent / "assets" / "rmef-logo.jpg"
     
-    col1, col2 = st.columns([1, 5])
-    with col1:
-        if logo_path.exists():
-            try:
-                from PIL import Image
-                logo = Image.open(logo_path)
-                st.image(logo, width=120)
-            except Exception:
-                pass  # Skip logo if there's an issue
-    with col2:
-        st.markdown("""
-            <div class="header-banner">
+    # Encode logo as base64 for HTML embedding
+    import base64
+    logo_html = ""
+    if logo_path.exists():
+        try:
+            with open(logo_path, "rb") as f:
+                logo_data = base64.b64encode(f.read()).decode()
+                logo_html = f'<img src="data:image/jpeg;base64,{logo_data}" alt="RMEF Logo">'
+        except Exception:
+            pass
+    
+    st.markdown(f"""
+        <div class="header-banner">
+            {logo_html}
+            <div class="header-text">
                 <h1>RMEF Analytics Dashboard</h1>
                 <p>Rocky Mountain Elk Foundation - Conservation & Fundraising Metrics</p>
             </div>
-        """, unsafe_allow_html=True)
+        </div>
+    """, unsafe_allow_html=True)
     
     # Load data
     try:
