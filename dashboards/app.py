@@ -988,6 +988,10 @@ def main():
             donations_display = donations_df.copy()
             donations_display['donor_name'] = donations_display['first_name'] + ' ' + donations_display['last_name']
             
+            # Ensure donation_date is datetime
+            if len(donations_display) > 0:
+                donations_display['donation_date'] = pd.to_datetime(donations_display['donation_date'])
+            
             # Column selector
             selected_cols = st.multiselect(
                 "Columns:",
@@ -997,19 +1001,22 @@ def main():
             )
             
             if selected_cols:
-                display_cols = [all_donation_cols[col] for col in selected_cols]
-                recent_donations = donations_display.nlargest(20, 'donation_date')[display_cols].copy()
-                
-                # Format columns
-                if 'donation_date' in display_cols:
-                    recent_donations['donation_date'] = recent_donations['donation_date'].dt.strftime('%Y-%m-%d')
-                if 'amount' in display_cols:
-                    recent_donations['amount'] = recent_donations['amount'].apply(lambda x: f"${x:,.2f}")
-                
-                # Clean column names (remove underscores, title case)
-                recent_donations.columns = [col.replace('_', ' ').title() for col in recent_donations.columns]
-                
-                st.dataframe(recent_donations, use_container_width=True, hide_index=True, height=400, column_config=None)
+                if len(donations_display) > 0:
+                    display_cols = [all_donation_cols[col] for col in selected_cols]
+                    recent_donations = donations_display.nlargest(20, 'donation_date')[display_cols].copy()
+                    
+                    # Format columns
+                    if 'donation_date' in display_cols:
+                        recent_donations['donation_date'] = recent_donations['donation_date'].dt.strftime('%Y-%m-%d')
+                    if 'amount' in display_cols:
+                        recent_donations['amount'] = recent_donations['amount'].apply(lambda x: f"${x:,.2f}")
+                    
+                    # Clean column names (remove underscores, title case)
+                    recent_donations.columns = [col.replace('_', ' ').title() for col in recent_donations.columns]
+                    
+                    st.dataframe(recent_donations, use_container_width=True, hide_index=True, height=400, column_config=None)
+                else:
+                    st.warning("No donation data available. Please ensure donations.csv and campaigns.csv are loaded.")
             else:
                 st.info("Please select at least one column to display.")
         
