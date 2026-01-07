@@ -1141,8 +1141,10 @@ def main():
             large_donations = donations_df[donations_df['amount'] > 10000][
                 ['donation_date', 'donor_type', 'campaign_name', 'amount']
             ].copy()
-            large_donations['donation_date'] = large_donations['donation_date'].dt.strftime('%Y-%m-%d')
-            large_donations['amount'] = large_donations['amount'].apply(lambda x: f"${x:,.2f}")
+            
+            if len(large_donations) > 0:
+                large_donations['donation_date'] = pd.to_datetime(large_donations['donation_date']).dt.strftime('%Y-%m-%d')
+                large_donations['amount'] = large_donations['amount'].apply(lambda x: f"${x:,.2f}")
             
             # Clean column names
             large_donations.columns = [col.replace('_', ' ').title() for col in large_donations.columns]
