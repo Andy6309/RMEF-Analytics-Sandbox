@@ -6,7 +6,7 @@
 
 A full-stack analytics project demonstrating end-to-end data engineering and dashboard capabilities, themed around the Rocky Mountain Elk Foundation (RMEF). This project simulates integrating multiple conservation-related data sources, modeling data, building ETL/ELT pipelines, and creating interactive dashboards.
 
-## 🚀 Live Dashboard
+## Live Dashboard
 
 **[View Live Dashboard](https://rmef-analytics.streamlit.app/)**
 
