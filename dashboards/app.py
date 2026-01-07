@@ -783,13 +783,13 @@ def main():
             donations_display = donations_df.copy()
             donations_display['donor_name'] = donations_display['first_name'] + ' ' + donations_display['last_name']
             
-            # Column selector with popover
-            with st.popover("Columns"):
-                st.write("Select columns to display:")
-                selected_cols = []
-                for col_name in all_donation_cols.keys():
-                    if st.checkbox(col_name, value=col_name in ['Donation Date', 'Donor Type', 'Campaign Name', 'Amount', 'Payment Method'], key=f'don_{col_name}'):
-                        selected_cols.append(col_name)
+            # Column selector
+            selected_cols = st.multiselect(
+                "Columns:",
+                options=list(all_donation_cols.keys()),
+                default=['Donation Date', 'Donor Type', 'Campaign Name', 'Amount', 'Payment Method'],
+                key='don_cols'
+            )
             
             if selected_cols:
                 display_cols = [all_donation_cols[col] for col in selected_cols]
@@ -823,13 +823,13 @@ def main():
                 'Join Date': 'join_date'
             }
             
-            # Column selector with popover
-            with st.popover("Columns"):
-                st.write("Select columns to display:")
-                selected_donor_cols = []
-                for col_name in all_donor_cols.keys():
-                    if st.checkbox(col_name, value=col_name in ['First Name', 'Last Name', 'Donor Type', 'Membership Level', 'State'], key=f'donor_{col_name}'):
-                        selected_donor_cols.append(col_name)
+            # Column selector
+            selected_donor_cols = st.multiselect(
+                "Columns:",
+                options=list(all_donor_cols.keys()),
+                default=['First Name', 'Last Name', 'Donor Type', 'Membership Level', 'State'],
+                key='donor_cols'
+            )
             
             if selected_donor_cols:
                 display_cols = [all_donor_cols[col] for col in selected_donor_cols]
@@ -861,13 +861,13 @@ def main():
                 'Elk Population Impacted': 'elk_population_impacted'
             }
             
-            # Column selector with popover
-            with st.popover("Columns"):
-                st.write("Select columns to display:")
-                selected_project_cols = []
-                for col_name in all_project_cols.keys():
-                    if st.checkbox(col_name, value=col_name in ['Project Name', 'Project Type', 'State', 'Status', 'Budget', 'Acres Protected'], key=f'proj_{col_name}'):
-                        selected_project_cols.append(col_name)
+            # Column selector
+            selected_project_cols = st.multiselect(
+                "Columns:",
+                options=list(all_project_cols.keys()),
+                default=['Project Name', 'Project Type', 'State', 'Status', 'Budget', 'Acres Protected'],
+                key='project_cols'
+            )
             
             if selected_project_cols:
                 display_cols = [all_project_cols[col] for col in selected_project_cols]
@@ -899,13 +899,13 @@ def main():
                 'Conservation Status': 'conservation_status'
             }
             
-            # Column selector with popover
-            with st.popover("Columns"):
-                st.write("Select columns to display:")
-                selected_habitat_cols = []
-                for col_name in all_habitat_cols.keys():
-                    if st.checkbox(col_name, value=col_name in ['Habitat Name', 'State', 'Region', 'Quality Score', 'Conservation Status'], key=f'hab_{col_name}'):
-                        selected_habitat_cols.append(col_name)
+            # Column selector
+            selected_habitat_cols = st.multiselect(
+                "Columns:",
+                options=list(all_habitat_cols.keys()),
+                default=['Habitat Name', 'State', 'Region', 'Quality Score', 'Conservation Status'],
+                key='habitat_cols'
+            )
             
             if selected_habitat_cols:
                 display_cols = [all_habitat_cols[col] for col in selected_habitat_cols]
