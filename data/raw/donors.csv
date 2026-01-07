@@ -1,0 +1,31 @@
+donor_id,first_name,last_name,email,phone,address,city,state,zip_code,donor_type,join_date,membership_level
+D001,John,Smith,john.smith@email.com,406-555-0101,123 Elk Ridge Rd,Missoula,MT,59801,Individual,2019-03-15,Gold
+D002,Sarah,Johnson,sarah.j@email.com,307-555-0102,456 Mountain View Dr,Jackson,WY,83001,Individual,2020-06-22,Silver
+D003,Rocky Mountain Outfitters,LLC,contact@rmoutfitters.com,406-555-0103,789 Main St,Bozeman,MT,59715,Corporate,2018-01-10,Platinum
+D004,Michael,Williams,m.williams@email.com,208-555-0104,321 Pine Creek Ln,Boise,ID,83702,Individual,2021-09-05,Bronze
+D005,Emily,Brown,emily.brown@email.com,303-555-0105,654 Aspen Way,Denver,CO,80202,Individual,2019-11-30,Gold
+D006,Elk Valley Ranch,Inc,info@elkvalleyranch.com,406-555-0106,987 Valley Rd,Helena,MT,59601,Corporate,2017-05-20,Platinum
+D007,David,Miller,d.miller@email.com,307-555-0107,147 Wilderness Trail,Cody,WY,82414,Individual,2022-02-14,Silver
+D008,Jennifer,Davis,jen.davis@email.com,208-555-0108,258 Forest Ave,Coeur d'Alene,ID,83814,Individual,2020-08-08,Gold
+D009,Wildlife Conservation Trust,,wct@trust.org,303-555-0109,369 Conservation Blvd,Boulder,CO,80301,Foundation,2016-04-01,Platinum
+D010,Robert,Garcia,r.garcia@email.com,406-555-0110,741 Timber Ln,Kalispell,MT,59901,Individual,2021-12-25,Bronze
+D011,Lisa,Martinez,lisa.m@email.com,307-555-0111,852 Sage Brush Rd,Sheridan,WY,82801,Individual,2018-07-17,Silver
+D012,Mountain States Bank,,msb@mountainbank.com,406-555-0112,963 Financial Dr,Great Falls,MT,59401,Corporate,2019-02-28,Gold
+D013,James,Anderson,james.a@email.com,208-555-0113,159 River Bend Way,Twin Falls,ID,83301,Individual,2020-04-12,Bronze
+D014,Patricia,Taylor,p.taylor@email.com,303-555-0114,357 Summit Peak Rd,Fort Collins,CO,80521,Individual,2017-10-05,Gold
+D015,Yellowstone Brewing Co,,hello@yellowstonebrew.com,406-555-0115,468 Brewery Ln,Livingston,MT,59047,Corporate,2021-06-30,Silver
+D016,Christopher,Thomas,c.thomas@email.com,307-555-0116,579 Antler Ridge,Laramie,WY,82070,Individual,2019-08-22,Bronze
+D017,Amanda,Jackson,amanda.j@email.com,208-555-0117,681 Meadow Creek Dr,Pocatello,ID,83201,Individual,2022-01-08,Silver
+D018,The Outdoor Foundation,,grants@outdoorfound.org,303-555-0118,792 Grant Ave,Aspen,CO,81611,Foundation,2015-11-15,Platinum
+D019,Daniel,White,dan.white@email.com,406-555-0119,813 Elk Horn Ct,Billings,MT,59101,Individual,2020-03-20,Gold
+D020,Jessica,Harris,jess.h@email.com,307-555-0120,924 Prairie View,Casper,WY,82601,Individual,2018-12-01,Silver
+D021,Matthew,Clark,matt.clark@email.com,208-555-0121,135 Mountain Shadow,Moscow,ID,83843,Individual,2021-05-15,Bronze
+D022,Big Sky Conservation LLC,,info@bigskycons.com,406-555-0122,246 Conservation Way,Whitefish,MT,59937,Corporate,2016-09-10,Platinum
+D023,Ashley,Lewis,ashley.l@email.com,303-555-0123,357 Alpine Meadow,Durango,CO,81301,Individual,2019-07-04,Gold
+D024,Joshua,Robinson,j.robinson@email.com,406-555-0124,468 Frontier Rd,Butte,MT,59701,Individual,2020-10-18,Silver
+D025,Stephanie,Walker,steph.w@email.com,307-555-0125,579 Buffalo Run,Gillette,WY,82716,Individual,2022-04-25,Bronze
+D026,Andrew,Hall,a.hall@email.com,208-555-0126,681 Clearwater Dr,Lewiston,ID,83501,Individual,2017-02-14,Gold
+D027,Nicole,Allen,nicole.a@email.com,303-555-0127,792 Red Rock Ln,Grand Junction,CO,81501,Individual,2019-09-30,Silver
+D028,Teton Valley Outfitters,,tvo@tetonvalley.com,307-555-0128,813 Outfitter Way,Pinedale,WY,82941,Corporate,2018-04-22,Gold
+D029,Ryan,Young,ryan.y@email.com,406-555-0129,924 Grizzly Peak Rd,Havre,MT,59501,Individual,2021-08-07,Bronze
+D030,Megan,King,megan.k@email.com,208-555-0130,135 Salmon River Rd,Salmon,ID,83467,Individual,2020-01-12,Silver

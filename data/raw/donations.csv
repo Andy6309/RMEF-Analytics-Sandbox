@@ -1,0 +1,51 @@
+donation_id,donor_id,campaign_id,amount,donation_date,payment_method,is_recurring,notes
+DN001,D001,C002,250.00,2023-01-15,Credit Card,True,Annual membership renewal
+DN002,D003,C007,15000.00,2023-02-01,Wire Transfer,False,Corporate sponsorship
+DN003,D005,C001,500.00,2023-03-10,Credit Card,False,Spring migration support
+DN004,D009,C003,50000.00,2023-06-15,Wire Transfer,False,Foundation grant for land acquisition
+DN005,D002,C002,100.00,2023-04-22,Credit Card,True,Monthly membership
+DN006,D006,C007,25000.00,2023-03-01,Check,False,Platinum corporate partner
+DN007,D008,C004,150.00,2023-05-01,Credit Card,False,Youth camp sponsorship
+DN008,D011,C001,75.00,2023-04-15,Credit Card,False,Migration corridor donation
+DN009,D014,C002,500.00,2023-02-28,Credit Card,True,Gold membership
+DN010,D018,C003,100000.00,2023-07-01,Wire Transfer,False,Major foundation grant
+DN011,D012,C007,10000.00,2023-05-15,Check,False,Corporate matching gift
+DN012,D019,C002,250.00,2023-06-01,Credit Card,True,Membership upgrade
+DN013,D022,C006,35000.00,2023-08-01,Wire Transfer,False,Habitat restoration sponsor
+DN014,D001,C009,1000.00,2023-10-15,Credit Card,False,Gala ticket purchase
+DN015,D015,C007,5000.00,2023-09-01,Check,False,Corporate partnership
+DN016,D023,C002,250.00,2023-07-04,Credit Card,True,Independence Day membership
+DN017,D004,C005,50.00,2023-11-15,Credit Card,False,Winter feeding donation
+DN018,D007,C008,200.00,2023-09-15,Credit Card,False,Research support
+DN019,D010,C002,75.00,2023-12-25,Credit Card,False,Holiday membership gift
+DN020,D028,C007,8000.00,2023-10-01,Check,False,Outfitter partnership
+DN021,D013,C010,100.00,2023-08-20,Credit Card,False,Wildfire recovery
+DN022,D016,C002,75.00,2023-08-22,Credit Card,True,Bronze membership
+DN023,D020,C009,500.00,2023-10-15,Credit Card,False,Gala attendance
+DN024,D024,C002,100.00,2023-10-18,Credit Card,True,Silver membership
+DN025,D026,C002,250.00,2023-11-14,Credit Card,True,Gold membership renewal
+DN026,D029,C005,25.00,2023-12-01,Credit Card,False,Winter feeding support
+DN027,D017,C012,100.00,2024-01-08,Credit Card,True,New membership
+DN028,D021,C012,75.00,2024-01-15,Credit Card,True,Bronze membership
+DN029,D025,C011,150.00,2024-03-15,Credit Card,False,Spring migration 2024
+DN030,D027,C012,100.00,2024-02-01,Credit Card,True,Silver membership
+DN031,D030,C014,75.00,2024-02-15,Credit Card,False,Research donation
+DN032,D003,C007,15000.00,2024-02-01,Wire Transfer,True,Annual corporate renewal
+DN033,D006,C013,100000.00,2024-01-15,Wire Transfer,False,Legacy gift pledge
+DN034,D009,C015,75000.00,2024-03-01,Wire Transfer,False,Public access grant
+DN035,D018,C006,50000.00,2024-01-20,Wire Transfer,False,Habitat restoration grant
+DN036,D001,C012,250.00,2024-01-15,Credit Card,True,Membership renewal
+DN037,D005,C011,500.00,2024-03-20,Credit Card,False,Migration support
+DN038,D008,C012,250.00,2024-02-08,Credit Card,True,Gold membership
+DN039,D011,C014,100.00,2024-03-01,Credit Card,False,Predator study support
+DN040,D014,C012,500.00,2024-02-28,Credit Card,True,Gold membership renewal
+DN041,D019,C011,300.00,2024-04-01,Credit Card,False,Spring campaign
+DN042,D022,C015,40000.00,2024-03-15,Wire Transfer,False,Access improvement sponsor
+DN043,D012,C013,25000.00,2024-04-01,Check,False,Legacy giving pledge
+DN044,D023,C012,250.00,2024-03-04,Credit Card,True,Membership renewal
+DN045,D002,C012,100.00,2024-04-22,Credit Card,True,Monthly membership
+DN046,D007,C014,150.00,2024-02-20,Credit Card,False,Research support
+DN047,D015,C012,5000.00,2024-03-01,Check,False,Corporate membership
+DN048,D028,C015,12000.00,2024-04-01,Check,False,Access project sponsor
+DN049,D004,C012,75.00,2024-05-05,Credit Card,True,Bronze membership
+DN050,D010,C011,50.00,2024-04-15,Credit Card,False,Migration donation

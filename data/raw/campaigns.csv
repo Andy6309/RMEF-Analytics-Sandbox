@@ -1,0 +1,16 @@
+campaign_id,campaign_name,campaign_type,start_date,end_date,goal_amount,description,target_region,status
+C001,Spring Elk Migration 2023,Habitat,2023-03-01,2023-05-31,150000.00,Support elk migration corridors in Montana and Wyoming,Northern Rockies,Completed
+C002,Annual Membership Drive 2023,Membership,2023-01-01,2023-12-31,500000.00,Year-round membership recruitment and retention,National,Completed
+C003,Public Lands Acquisition Fund,Land,2023-06-01,2023-12-31,1000000.00,Acquire critical elk habitat on public lands,Western States,Completed
+C004,Youth Conservation Education,Education,2023-04-15,2023-08-15,75000.00,Summer conservation camps for youth,Mountain West,Completed
+C005,Winter Feeding Program 2023,Wildlife,2023-11-01,2024-02-28,200000.00,Emergency winter feeding stations for elk herds,Northern Rockies,Active
+C006,Habitat Restoration Initiative,Habitat,2023-07-01,2024-06-30,350000.00,Restore degraded elk habitat across 5 states,Western States,Active
+C007,Corporate Partnership Program,Corporate,2023-01-01,2023-12-31,750000.00,Engage corporate sponsors for conservation,National,Completed
+C008,Elk Research & Monitoring,Research,2023-09-01,2024-08-31,125000.00,GPS collar and population monitoring studies,Northern Rockies,Active
+C009,Fall Fundraising Gala 2023,Event,2023-10-15,2023-10-15,100000.00,Annual black-tie fundraising event,National,Completed
+C010,Wildfire Recovery Fund,Emergency,2023-08-01,2023-12-31,250000.00,Restore elk habitat damaged by wildfires,Pacific Northwest,Completed
+C011,Spring Elk Migration 2024,Habitat,2024-03-01,2024-05-31,175000.00,Continue migration corridor protection,Northern Rockies,Active
+C012,Annual Membership Drive 2024,Membership,2024-01-01,2024-12-31,550000.00,Expand membership base nationwide,National,Active
+C013,Legacy Giving Program,Planned Giving,2023-01-01,2025-12-31,2000000.00,Encourage planned gifts and bequests,National,Active
+C014,Predator Management Study,Research,2024-01-15,2024-12-31,180000.00,Study predator-prey dynamics in elk populations,Northern Rockies,Active
+C015,Public Access Improvement,Land,2024-02-01,2024-10-31,300000.00,Improve public access to elk hunting areas,Western States,Active

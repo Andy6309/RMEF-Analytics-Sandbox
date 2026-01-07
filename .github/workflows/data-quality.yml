@@ -1,0 +1,52 @@
+name: Data Quality Checks
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  data-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest
+    
+    - name: Run ETL Pipeline
+      run: |
+        python pipelines/etl_pipeline.py
+    
+    - name: Run Data Quality Tests
+      run: |
+        pytest tests/test_data_quality.py -v
+    
+    - name: Run Pipeline Tests
+      run: |
+        pytest tests/test_pipeline.py -v
+    
+    - name: Generate Data Quality Report
+      if: always()
+      run: |
+        echo "Data Quality Report - $(date)" > data_quality_report.txt
+        echo "================================" >> data_quality_report.txt
+        pytest tests/ -v --tb=short >> data_quality_report.txt 2>&1 || true
+    
+    - name: Upload Report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: data-quality-report
+        path: data_quality_report.txt
+        retention-days: 90
