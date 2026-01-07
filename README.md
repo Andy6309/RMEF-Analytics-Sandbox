@@ -193,6 +193,18 @@ engine = get_engine("postgresql://user:pass@localhost/rmef_analytics")
 ### Logging
 ETL logs are written to `pipelines/etl.log` with timestamps and severity levels.
 
+## CI/CD & Deployment
+
+### GitHub Actions Pipelines
+Three automated workflows run on every push:
+
+- **CI Pipeline** - Runs tests, linting, and code coverage
+- **Deploy Pipeline** - Creates deployment artifacts
+- **Data Quality** - Daily automated data quality checks
+
+### Deployment
+Live dashboard: Deploy to Streamlit Cloud by connecting your GitHub repository at https://share.streamlit.io
+
 ## License
 
 This is a demonstration/portfolio project using mock data. Not affiliated with the actual Rocky Mountain Elk Foundation.
