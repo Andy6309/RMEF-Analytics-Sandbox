@@ -784,7 +784,7 @@ def main():
             donations_display['donor_name'] = donations_display['first_name'] + ' ' + donations_display['last_name']
             
             # Column selector with popover
-            with st.popover("Columns", use_container_width=False):
+            with st.popover("Columns"):
                 st.write("Select columns to display:")
                 selected_cols = []
                 for col_name in all_donation_cols.keys():
@@ -824,7 +824,7 @@ def main():
             }
             
             # Column selector with popover
-            with st.popover("Columns", use_container_width=False):
+            with st.popover("Columns"):
                 st.write("Select columns to display:")
                 selected_donor_cols = []
                 for col_name in all_donor_cols.keys():
@@ -862,7 +862,7 @@ def main():
             }
             
             # Column selector with popover
-            with st.popover("Columns", use_container_width=False):
+            with st.popover("Columns"):
                 st.write("Select columns to display:")
                 selected_project_cols = []
                 for col_name in all_project_cols.keys():
@@ -900,7 +900,7 @@ def main():
             }
             
             # Column selector with popover
-            with st.popover("Columns", use_container_width=False):
+            with st.popover("Columns"):
                 st.write("Select columns to display:")
                 selected_habitat_cols = []
                 for col_name in all_habitat_cols.keys():
