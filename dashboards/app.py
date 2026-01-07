@@ -612,8 +612,180 @@ def main():
             delta="active donors"
         )
     
+    # Membership Analytics - Highlighted Section
+    with st.expander("Membership Analytics & Business Targets", expanded=True):
+        # Membership tier pricing
+        tier_pricing = {
+            'Supporting': 35,
+            'Team Elk': 50,
+            'Sportsman': 100,
+            'Heritage': 250,
+            'Life': 1500
+        }
+        
+        # Calculate membership metrics
+        tier_breakdown = membership_df['membership_level'].value_counts()
+        total_members = len(membership_df)
+        
+        # Calculate Annual Recurring Revenue (ARR) potential
+        arr_by_tier = {}
+        for tier, count in tier_breakdown.items():
+            if tier in tier_pricing:
+                if tier == 'Life':
+                    # Life members: amortize over 10 years
+                    arr_by_tier[tier] = (count * tier_pricing[tier]) / 10
+                else:
+                    arr_by_tier[tier] = count * tier_pricing[tier]
+        
+        total_arr = sum(arr_by_tier.values())
+        
+        # Membership KPIs
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            st.markdown("""
+                <div class="big-number">
+                    <div class="big-number-value">{:,}</div>
+                    <div class="big-number-label">TOTAL MEMBERS</div>
+                </div>
+            """.format(total_members), unsafe_allow_html=True)
+        
+        with col2:
+            avg_tier_value = total_arr / total_members if total_members > 0 else 0
+            st.markdown("""
+                <div class="big-number">
+                    <div class="big-number-value">${:,.0f}</div>
+                    <div class="big-number-label">AVG MEMBER VALUE/YR</div>
+                </div>
+            """.format(avg_tier_value), unsafe_allow_html=True)
+        
+        with col3:
+            st.markdown("""
+                <div class="big-number">
+                    <div class="big-number-value">${:,.0f}</div>
+                    <div class="big-number-label">ANNUAL RECURRING REVENUE</div>
+                </div>
+            """.format(total_arr), unsafe_allow_html=True)
+        
+        with col4:
+            premium_members = tier_breakdown.get('Heritage', 0) + tier_breakdown.get('Life', 0)
+            premium_pct = (premium_members / total_members * 100) if total_members > 0 else 0
+            st.markdown("""
+                <div class="big-number">
+                    <div class="big-number-value">{:.1f}%</div>
+                    <div class="big-number-label">PREMIUM MEMBERS</div>
+                </div>
+            """.format(premium_pct), unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Membership visualizations
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.subheader("Membership Distribution by Tier")
+            
+            # Create tier breakdown with revenue
+            tier_data = []
+            for tier in ['Supporting', 'Team Elk', 'Sportsman', 'Heritage', 'Life']:
+                count = tier_breakdown.get(tier, 0)
+                revenue = arr_by_tier.get(tier, 0)
+                tier_data.append({
+                    'Tier': tier,
+                    'Members': count,
+                    'ARR': revenue,
+                    'Price': tier_pricing.get(tier, 0)
+                })
+            
+            tier_df = pd.DataFrame(tier_data)
+            
+            fig = go.Figure()
+            fig.add_trace(go.Bar(
+                name='Members',
+                x=tier_df['Tier'],
+                y=tier_df['Members'],
+                marker_color='#0071bc',
+                text=tier_df['Members'],
+                textposition='outside'
+            ))
+            fig.update_layout(
+                height=350,
+                yaxis_title='Number of Members',
+                showlegend=False
+            )
+            st.plotly_chart(fig, use_container_width=True)
+            
+            # Tier summary table
+            st.markdown("**Tier Performance Summary**")
+            summary_df = tier_df[['Tier', 'Members', 'Price', 'ARR']].copy()
+            summary_df['Price'] = summary_df['Price'].apply(lambda x: f'${x:,.0f}')
+            summary_df['ARR'] = summary_df['ARR'].apply(lambda x: f'${x:,.0f}')
+            summary_df.columns = ['Membership Tier', 'Members', 'Annual Price', 'Total ARR']
+            st.dataframe(summary_df, use_container_width=True, hide_index=True)
+        
+        with col2:
+            st.subheader("Membership Growth Trends")
+            membership_df['join_date'] = pd.to_datetime(membership_df['join_date'])
+            membership_df['join_month'] = membership_df['join_date'].dt.to_period('M').astype(str)
+            
+            monthly_joins = membership_df.groupby('join_month').size().reset_index(name='new_members')
+            monthly_joins['cumulative'] = monthly_joins['new_members'].cumsum()
+            
+            fig = go.Figure()
+            fig.add_trace(go.Bar(
+                x=monthly_joins['join_month'],
+                y=monthly_joins['new_members'],
+                name='New Members',
+                marker_color='#0071bc'
+            ))
+            fig.add_trace(go.Scatter(
+                x=monthly_joins['join_month'],
+                y=monthly_joins['cumulative'],
+                name='Cumulative',
+                mode='lines+markers',
+                marker_color='#112e51',
+                yaxis='y2'
+            ))
+            fig.update_layout(
+                height=350,
+                yaxis=dict(title='New Members'),
+                yaxis2=dict(title='Cumulative Members', overlaying='y', side='right'),
+                legend=dict(orientation='h', yanchor='bottom', y=1.02),
+                xaxis=dict(tickangle=45)
+            )
+            st.plotly_chart(fig, use_container_width=True)
+            
+            # Growth metrics
+            st.markdown("**Growth Metrics**")
+            recent_3mo = membership_df[membership_df['join_date'] >= (membership_df['join_date'].max() - pd.DateOffset(months=3))]
+            growth_rate_3mo = (len(recent_3mo) / total_members * 100) if total_members > 0 else 0
+            
+            metrics_col1, metrics_col2 = st.columns(2)
+            with metrics_col1:
+                st.metric("New Members (Last 3 Mo)", len(recent_3mo))
+            with metrics_col2:
+                st.metric("Growth Rate", f"{growth_rate_3mo:.1f}%")
+        
+        st.markdown("---")
+        
+        # Geographic distribution
+        st.subheader("Membership by State (Top 10)")
+        state_breakdown = membership_df['state'].value_counts().head(10).reset_index()
+        state_breakdown.columns = ['State', 'Members']
+        
+        fig = px.bar(
+            state_breakdown,
+            x='State',
+            y='Members',
+            color='Members',
+            color_continuous_scale='Blues',
+            labels={'Members': 'Member Count'}
+        )
+        fig.update_layout(height=300, showlegend=False)
+        st.plotly_chart(fig, use_container_width=True)
+    
     # Donation Analytics - Collapsible
-    with st.expander("Donation Analytics", expanded=True):
+    with st.expander("Donation Analytics", expanded=False):
         col1, col2 = st.columns(2)
         
         with col1:
@@ -652,44 +824,12 @@ def main():
             fig.update_traces(textposition='inside', textinfo='percent+label')
             st.plotly_chart(fig, use_container_width=True)
     
-    # Membership & Population - Collapsible
-    with st.expander("Membership & Population Trends", expanded=True):
+    # Elk Population Trends - Collapsible
+    with st.expander("Elk Population Trends", expanded=False):
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("Membership Growth Over Time")
-            membership_df['join_date'] = pd.to_datetime(membership_df['join_date'])
-            membership_df['join_month'] = membership_df['join_date'].dt.to_period('M').astype(str)
-            
-            monthly_joins = membership_df.groupby('join_month').size().reset_index(name='new_members')
-            monthly_joins['cumulative'] = monthly_joins['new_members'].cumsum()
-            
-            fig = go.Figure()
-            fig.add_trace(go.Bar(
-                x=monthly_joins['join_month'],
-                y=monthly_joins['new_members'],
-                name='New Members',
-                marker_color='#0071bc'
-            ))
-            fig.add_trace(go.Scatter(
-                x=monthly_joins['join_month'],
-                y=monthly_joins['cumulative'],
-                name='Cumulative',
-                mode='lines+markers',
-                marker_color='#112e51',
-                yaxis='y2'
-            ))
-            fig.update_layout(
-                height=350,
-                yaxis=dict(title='New Members'),
-                yaxis2=dict(title='Cumulative Members', overlaying='y', side='right'),
-                legend=dict(orientation='h', yanchor='bottom', y=1.02),
-                xaxis=dict(tickangle=45)
-            )
-            st.plotly_chart(fig, use_container_width=True)
-        
-        with col2:
-            st.subheader("Elk Population Trends by Habitat")
+            st.subheader("Elk Population by Habitat")
             fig = px.line(
                 elk_df,
                 x='year',
