@@ -1,5 +1,9 @@
 # RMEF Analytics Sandbox
 
+![CI Pipeline](https://github.com/Andy6309/RMEF-Analytics-Sandbox/workflows/CI%20Pipeline/badge.svg)
+![Deploy Dashboard](https://github.com/Andy6309/RMEF-Analytics-Sandbox/workflows/Deploy%20Dashboard/badge.svg)
+![Data Quality](https://github.com/Andy6309/RMEF-Analytics-Sandbox/workflows/Data%20Quality%20Checks/badge.svg)
+
 A full-stack analytics project demonstrating end-to-end data engineering and dashboard capabilities, themed around the Rocky Mountain Elk Foundation (RMEF). This project simulates integrating multiple conservation-related data sources, modeling data, building ETL/ELT pipelines, and creating interactive dashboards.
 
 ## Project Overview
