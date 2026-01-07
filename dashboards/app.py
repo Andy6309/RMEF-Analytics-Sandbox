@@ -273,17 +273,19 @@ def get_db_connection():
     """Create database connection and ensure database exists"""
     db_path = Path(__file__).parent.parent / "data" / "rmef_analytics.db"
     
-    # Run ETL pipeline if database doesn't exist
+    # Run ETL pipeline if database doesn't exist (silently)
     if not db_path.exists():
-        st.info("Database not found. Running ETL pipeline to generate data...")
+        import logging
+        logging.getLogger().setLevel(logging.ERROR)  # Suppress info logs
         try:
             from pipelines.etl_pipeline import RMEFPipeline
             pipeline = RMEFPipeline()
-            stats = pipeline.run()
-            st.success(f"ETL pipeline completed successfully! Loaded {stats.get('total_records', 0)} records.")
+            pipeline.run()
         except Exception as e:
-            st.error(f"Error running ETL pipeline: {e}")
+            st.error(f"Error initializing database: {e}")
             raise
+        finally:
+            logging.getLogger().setLevel(logging.INFO)
     
     return create_engine(f"sqlite:///{db_path}")
 
