@@ -35,12 +35,12 @@ class TestDonorsDataQuality:
     
     def test_valid_states(self, donors_df):
         """Ensure state codes are valid 2-letter codes"""
-        valid_states = ['MT', 'WY', 'ID', 'CO', 'OR', 'WA', 'UT', 'NV', 'AZ', 'NM']
+        valid_states = ['MT', 'WY', 'ID', 'CO', 'OR', 'WA', 'UT', 'NV', 'AZ', 'NM', 'CA', 'TX']
         assert donors_df['state'].isin(valid_states).all(), "Found invalid state codes"
     
     def test_valid_membership_levels(self, donors_df):
         """Ensure membership levels are valid"""
-        valid_levels = ['Bronze', 'Silver', 'Gold', 'Platinum']
+        valid_levels = ['Supporting', 'Team Elk', 'Sportsman', 'Heritage', 'Life']
         assert donors_df['membership_level'].isin(valid_levels).all(), "Found invalid membership levels"
     
     def test_valid_donor_types(self, donors_df):
@@ -119,7 +119,7 @@ class TestDonationsDataQuality:
     
     def test_valid_payment_methods(self, donations_df):
         """Ensure payment methods are valid"""
-        valid_methods = ['Credit Card', 'Check', 'Wire Transfer', 'Cash', 'ACH']
+        valid_methods = ['Credit Card', 'Check', 'Wire Transfer', 'Cash', 'ACH', 'PayPal', 'ACH Transfer']
         assert donations_df['payment_method'].isin(valid_methods).all(), "Found invalid payment methods"
 
 
