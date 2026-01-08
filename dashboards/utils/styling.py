@@ -89,7 +89,10 @@ def apply_custom_css():
         border: none !important;
     }
     
-    [data-testid="stMetric"] label {
+    [data-testid="stMetric"] label,
+    [data-testid="stMetric"] label *,
+    [data-testid="stMetric"] [data-testid="stMetricLabel"],
+    [data-testid="stMetric"] [data-testid="stMetricLabel"] * {
         color: #aeb0b5 !important;
         font-weight: 400 !important;
         font-size: 0.85rem !important;
@@ -97,13 +100,17 @@ def apply_custom_css():
         letter-spacing: 0.5px !important;
     }
     
-    [data-testid="stMetric"] [data-testid="stMetricValue"] {
+    [data-testid="stMetric"] [data-testid="stMetricValue"],
+    [data-testid="stMetric"] [data-testid="stMetricValue"] *,
+    [data-testid="stMetric"] [data-testid="stMetricValue"] div,
+    [data-testid="stMetric"] [data-testid="stMetricValue"] span {
         color: white !important;
         font-size: 2.5rem !important;
         font-weight: 700 !important;
     }
     
-    [data-testid="stMetric"] [data-testid="stMetricDelta"] {
+    [data-testid="stMetric"] [data-testid="stMetricDelta"],
+    [data-testid="stMetric"] [data-testid="stMetricDelta"] * {
         color: #2e8540 !important;
     }
     
@@ -272,6 +279,59 @@ def apply_custom_css():
         background-color: #e0e0e0 !important;
     }
     
+    /* All selectbox styling - both sidebar and main content */
+    [data-baseweb="select"],
+    [data-baseweb="select"] > div,
+    [data-baseweb="select"] [role="button"] {
+        background-color: white !important;
+    }
+    
+    [data-baseweb="select"] div,
+    [data-baseweb="select"] span,
+    [data-baseweb="select"] input,
+    [data-baseweb="select"] [role="button"] {
+        color: #212121 !important;
+        background-color: white !important;
+    }
+    
+    [data-baseweb="select"] svg {
+        fill: #212121 !important;
+    }
+    
+    /* Dropdown menu items */
+    [role="listbox"],
+    [role="listbox"] ul,
+    [role="listbox"] li,
+    [role="option"] {
+        background-color: white !important;
+        color: #212121 !important;
+    }
+    
+    [role="option"]:hover,
+    [role="option"][aria-selected="true"] {
+        background-color: #e0e0e0 !important;
+        color: #212121 !important;
+    }
+    
+    /* Force all text in dropdown to be visible */
+    [role="listbox"] *,
+    [role="option"] * {
+        color: #212121 !important;
+    }
+    
+    /* Info box styling */
+    .stAlert {
+        background-color: #e7f2f8 !important;
+        border: 1px solid #0071bc !important;
+        color: #212121 !important;
+    }
+    
+    .stAlert p,
+    .stAlert span,
+    .stAlert div {
+        color: #212121 !important;
+    }
+    
     /* Sidebar divider */
     section[data-testid="stSidebar"] hr {
         border-color: #aeb0b5 !important;
@@ -280,6 +340,7 @@ def apply_custom_css():
     /* Expander styling */
     [data-testid="stExpander"] {
         border: 1px solid #d6d7d9 !important;
+        background-color: white !important;
     }
     
     [data-testid="stExpander"] summary {
@@ -289,6 +350,98 @@ def apply_custom_css():
     [data-testid="stExpander"] summary p,
     [data-testid="stExpander"] summary span {
         color: white !important;
+    }
+    
+    /* Expander content area - force white background and dark text */
+    [data-testid="stExpander"] > div:not(summary),
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"],
+    [data-testid="stExpander"] [data-testid="stVerticalBlock"] {
+        background-color: white !important;
+    }
+    
+    /* All text inside expander CONTENT (not summary) should be dark - EXCEPT metric labels */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMarkdownContainer"] p,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMarkdownContainer"] span,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMarkdownContainer"] strong,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMarkdownContainer"] li,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] .stCheckbox label {
+        color: #212121 !important;
+    }
+    
+    /* Labels inside expanders - but NOT metric labels */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] label:not([data-testid="stMetric"] label):not([data-testid="stMetric"] *) {
+        color: #212121 !important;
+    }
+    
+    /* Subheaders inside expander content - but NOT inside metrics */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] h1:not([data-testid="stMetric"] h1),
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] h2:not([data-testid="stMetric"] h2),
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] h3:not([data-testid="stMetric"] h3) {
+        color: #112e51 !important;
+    }
+    
+    /* Ensure ALL metric components inside expanders have proper colors - highest specificity */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"],
+    [data-testid="stExpander"] [data-testid="stMetric"] {
+        background-color: #112e51 !important;
+    }
+    
+    /* Metric labels - light gray on dark background */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] label,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricLabel"],
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricLabel"] *,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricLabel"] div,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricLabel"] span,
+    [data-testid="stExpander"] [data-testid="stMetric"] label,
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricLabel"],
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricLabel"] *,
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricLabel"] div,
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricLabel"] span {
+        color: #aeb0b5 !important;
+        background-color: transparent !important;
+    }
+    
+    /* Metric values - white on dark background */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricValue"],
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricValue"] *,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricValue"] div,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricValue"] span,
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricValue"],
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricValue"] *,
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricValue"] div,
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricValue"] span {
+        color: white !important;
+        background-color: transparent !important;
+    }
+    
+    /* Metric deltas - green */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricDelta"],
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMetric"] [data-testid="stMetricDelta"] *,
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricDelta"],
+    [data-testid="stExpander"] [data-testid="stMetric"] [data-testid="stMetricDelta"] * {
+        color: #2e8540 !important;
+        background-color: transparent !important;
+    }
+    
+    /* Caption text inside expander content */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stCaptionContainer"],
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] .stCaption {
+        color: #5a5a5a !important;
+    }
+    
+    /* Multiselect inside expander content */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stMultiSelect"] label,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] .stMultiSelect label {
+        color: #212121 !important;
+    }
+    
+    /* Table headers and data inside expander content */
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] table,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] table th,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] table td,
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stDataFrame"],
+    [data-testid="stExpander"] [data-testid="stExpanderDetails"] [data-testid="stDataFrame"] * {
+        color: #212121 !important;
     }
     
     /* Chart containers */
@@ -317,12 +470,29 @@ def apply_custom_css():
     .stTabs [data-baseweb="tab"] {
         background-color: #f1f1f1;
         border: 1px solid #d6d7d9;
-        color: #112e51;
+        color: #112e51 !important;
         padding: 0.75rem 1.5rem;
     }
     
-    .stTabs [aria-selected="true"] {
+    .stTabs [data-baseweb="tab"] * {
+        color: #112e51 !important;
+    }
+    
+    .stTabs [data-baseweb="tab"][aria-selected="true"] {
         background-color: #112e51 !important;
+    }
+    
+    .stTabs [data-baseweb="tab"][aria-selected="true"],
+    .stTabs [data-baseweb="tab"][aria-selected="true"] *,
+    .stTabs [data-baseweb="tab"][aria-selected="true"] button,
+    .stTabs [data-baseweb="tab"][aria-selected="true"] p,
+    .stTabs [data-baseweb="tab"][aria-selected="true"] span,
+    .stTabs [data-baseweb="tab"][aria-selected="true"] div,
+    .stTabs button[aria-selected="true"],
+    .stTabs button[aria-selected="true"] *,
+    .stTabs button[aria-selected="true"] p,
+    .stTabs button[aria-selected="true"] span,
+    .stTabs button[aria-selected="true"] div {
         color: white !important;
     }
     

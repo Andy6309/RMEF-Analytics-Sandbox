@@ -133,6 +133,35 @@ pytest tests/ -v
 - At-risk habitats highlighted
 - Population decline alerts
 
+### Power BI Export
+Export dashboard data for advanced analysis in Power BI:
+
+**Available Datasets:**
+- Summary Metrics - Key performance indicators
+- Donations - Transaction details with donor and campaign info
+- Membership - Member directory and contact information
+- Conservation Projects - Budget, spending, and impact metrics
+- Habitat Areas - Quality scores and conservation status
+- Elk Population - Historical population data by habitat
+
+**Export Formats:**
+- **Excel (.xlsx)** - Recommended for multi-dataset exports with separate sheets
+- **CSV (.csv)** - Single dataset, universal compatibility
+- **JSON (.json)** - Structured data for API integrations
+
+**How to Use:**
+1. Open the "Power BI Export" section at the bottom of the dashboard
+2. Select the datasets you want to export
+3. Choose your preferred format (Excel recommended)
+4. Click "Generate Export" then "Download File"
+5. Import into Power BI Desktop: Get Data → Excel/CSV/JSON
+
+**Power BI Integration:**
+- Create relationships between tables (e.g., Donations ↔ Membership via `donor_id`)
+- Enable Auto Date/Time for time-based analysis
+- Use Summary Metrics sheet for quick KPI dashboards
+- See `docs/POWERBI_EXPORT_GUIDE.md` for detailed instructions
+
 ## Data Sources
 
 ### Donors (`donors.csv`)
