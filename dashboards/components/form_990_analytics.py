@@ -31,7 +31,6 @@ def load_990_financial_data() -> pd.DataFrame:
     """Load Form 990 financial data from database"""
     from sqlalchemy import create_engine, text
     from pathlib import Path
-    import streamlit as st
     
     db_path = Path(__file__).parent.parent.parent / "data" / "rmef_analytics.db"
     engine = create_engine(f"sqlite:///{db_path}")
@@ -45,27 +44,17 @@ def load_990_financial_data() -> pd.DataFrame:
         if not result.fetchone():
             needs_etl = True
         else:
-            # Table exists, check if it has data
             count_result = conn.execute(text("SELECT COUNT(*) FROM fact_990_financial"))
             if count_result.fetchone()[0] == 0:
                 needs_etl = True
     
     if needs_etl:
-        st.info("Form 990 data not found. Running ETL pipeline...")
         import sys
         project_root = Path(__file__).parent.parent.parent
         sys.path.insert(0, str(project_root))
-        
-        try:
-            from pipelines.etl_990_pipeline import Form990Pipeline
-            pipeline = Form990Pipeline(db_path=f"sqlite:///{db_path}")
-            pipeline.run(extract_fresh=True)
-            st.success("Form 990 ETL pipeline completed!")
-        except Exception as e:
-            st.error(f"ETL Pipeline failed: {e}")
-            import traceback
-            st.code(traceback.format_exc())
-            raise
+        from pipelines.etl_990_pipeline import Form990Pipeline
+        pipeline = Form990Pipeline(db_path=f"sqlite:///{db_path}")
+        pipeline.run(extract_fresh=True)
     
     query = """
         SELECT * FROM fact_990_financial
