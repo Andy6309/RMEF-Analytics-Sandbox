@@ -88,7 +88,7 @@ class Form990Pipeline:
     
     def _load_extracted_data(self) -> List[Dict]:
         """Load previously extracted data from JSON"""
-        json_path = Path("data/raw/form_990_data.json")
+        json_path = Path(__file__).parent.parent / "data" / "raw" / "form_990_data.json"
         if not json_path.exists():
             raise FileNotFoundError(f"Extracted data not found: {json_path}")
         
