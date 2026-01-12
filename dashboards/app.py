@@ -30,6 +30,7 @@ from dashboards.components.elk_population import render_elk_population
 from dashboards.components.conservation_habitat import render_conservation_habitat
 from dashboards.components.data_tables import render_data_tables
 from dashboards.components.powerbi_export_ui import render_powerbi_export
+from dashboards.components.form_990_analytics import render_form_990_analytics
 
 # Page configuration
 st.set_page_config(
@@ -128,18 +129,27 @@ def main():
         donations_df, elk_df, habitat_df, membership_df, conservation_df
     )
     
-    # Render KPIs (now using filtered data)
-    render_kpis(donations_df, membership_df, elk_df, conservation_df)
+    # Create tabs for dashboard navigation
+    tab_operations, tab_990 = st.tabs(["Operations Dashboard", "Form 990 Financial Analysis"])
     
-    # Render main components
-    render_membership_analytics(membership_df)
-    render_donation_analytics(donations_df)
-    render_elk_population(elk_df)
-    render_conservation_habitat(conservation_df, habitat_df)
-    render_data_tables(donations_df, membership_df, conservation_df, habitat_df)
+    with tab_operations:
+        # Render KPIs (now using filtered data)
+        render_kpis(donations_df, membership_df, elk_df, conservation_df)
+        
+        # Render main components
+        render_membership_analytics(membership_df)
+        render_donation_analytics(donations_df)
+        render_elk_population(elk_df)
+        render_conservation_habitat(conservation_df, habitat_df)
+        
+        render_data_tables(donations_df, membership_df, conservation_df, habitat_df)
+        
+        # Render Power BI export component
+        render_powerbi_export(donations_df, membership_df, elk_df, conservation_df, habitat_df)
     
-    # Render Power BI export component
-    render_powerbi_export(donations_df, membership_df, elk_df, conservation_df, habitat_df)
+    with tab_990:
+        # Render Form 990 Financial Analytics
+        render_form_990_analytics()
     
     # Footer
     st.markdown("""
