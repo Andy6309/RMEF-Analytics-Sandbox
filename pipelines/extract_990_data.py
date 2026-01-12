@@ -299,9 +299,13 @@ class Form990Extractor:
         )
 
 
-def extract_all_990s(assets_dir: str = "assets") -> List[Dict[str, Any]]:
+def extract_all_990s(assets_dir: str = None) -> List[Dict[str, Any]]:
     """Extract data from all Form 990 PDFs in the assets directory"""
-    assets_path = Path(assets_dir)
+    if assets_dir is None:
+        # Use absolute path relative to this script
+        assets_path = Path(__file__).parent.parent / "assets"
+    else:
+        assets_path = Path(assets_dir)
     pdf_files = list(assets_path.glob("*990*.pdf"))
     
     results = []
@@ -317,9 +321,12 @@ def extract_all_990s(assets_dir: str = "assets") -> List[Dict[str, Any]]:
     return results
 
 
-def save_extracted_data(data: List[Dict], output_path: str = "data/raw/form_990_data.json"):
+def save_extracted_data(data: List[Dict], output_path: str = None):
     """Save extracted data to JSON file"""
-    output = Path(output_path)
+    if output_path is None:
+        output = Path(__file__).parent.parent / "data" / "raw" / "form_990_data.json"
+    else:
+        output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
     
     with open(output, 'w') as f:

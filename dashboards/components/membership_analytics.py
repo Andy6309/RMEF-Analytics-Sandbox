@@ -124,22 +124,67 @@ def render_membership_analytics(membership_df):
             st.plotly_chart(fig, use_container_width=True)
             
             st.markdown("**Growth Metrics**")
-            recent_3mo = membership_df[membership_df['join_date'] >= (membership_df['join_date'].max() - pd.DateOffset(months=3))]
-            growth_rate_3mo = (len(recent_3mo) / total_members * 100) if total_members > 0 else 0
-            
+
+            # Date range picker for growth metrics
+            max_date = membership_df['join_date'].max().date()
+            min_date = membership_df['join_date'].min().date()
+            default_start = (max_date - pd.DateOffset(months=3))
+            if hasattr(default_start, 'date'):
+                default_start = default_start.date()
+
+            # Initialize session state for dates
+            if 'growth_start_date' not in st.session_state:
+                st.session_state.growth_start_date = default_start
+            if 'growth_end_date' not in st.session_state:
+                st.session_state.growth_end_date = max_date
+
+            date_col1, date_col2, date_col3 = st.columns([2, 2, 1])
+            with date_col1:
+                start_date = st.date_input(
+                    "Start Date",
+                    value=st.session_state.growth_start_date,
+                    min_value=min_date,
+                    max_value=max_date,
+                    key="growth_start_input"
+                )
+            with date_col2:
+                end_date = st.date_input(
+                    "End Date",
+                    value=st.session_state.growth_end_date,
+                    min_value=min_date,
+                    max_value=max_date,
+                    key="growth_end_input"
+                )
+            with date_col3:
+                st.markdown("<br>", unsafe_allow_html=True)
+                if st.button("Clear", key="clear_growth_dates"):
+                    st.session_state.growth_start_date = default_start
+                    st.session_state.growth_end_date = max_date
+                    st.rerun()
+
+            # Update session state
+            st.session_state.growth_start_date = start_date
+            st.session_state.growth_end_date = end_date
+
+            recent_members = membership_df[
+                (membership_df['join_date'].dt.date >= start_date) & 
+                (membership_df['join_date'].dt.date <= end_date)
+            ]
+            growth_rate = (len(recent_members) / total_members * 100) if total_members > 0 else 0
+
             metrics_col1, metrics_col2 = st.columns(2)
             with metrics_col1:
-                st.metric("New Members (Last 3 Mo)", len(recent_3mo))
+                st.metric("New Members", len(recent_members))
             with metrics_col2:
-                st.metric("Growth Rate", f"{growth_rate_3mo:.1f}%")
+                st.metric("Growth Rate", f"{growth_rate:.1f}%")
         
-        st.markdown("---")
+            st.markdown("---")
         
-        st.subheader("Membership by State (Top 10)")
-        state_breakdown = membership_df['state'].value_counts().head(10).reset_index()
-        state_breakdown.columns = ['State', 'Members']
+            st.subheader("Membership by State (Top 10)")
+            state_breakdown = membership_df['state'].value_counts().head(10).reset_index()
+            state_breakdown.columns = ['State', 'Members']
         
-        fig = px.bar(
+    fig = px.bar(
             state_breakdown,
             x='State',
             y='Members',
@@ -147,5 +192,5 @@ def render_membership_analytics(membership_df):
             color_continuous_scale='Blues',
             labels={'Members': 'Member Count'}
         )
-        fig.update_layout(height=300, showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+    fig.update_layout(height=300, showlegend=False)
+    st.plotly_chart(fig, use_container_width=True)

@@ -54,7 +54,17 @@ def render_elk_population(elk_df):
                 markers=True,
                 labels={'elk_count': 'Elk Count', 'year': 'Year', 'habitat_name': 'Habitat'}
             )
-            fig.update_layout(height=350, legend=dict(orientation='h', yanchor='bottom', y=-0.5))
+            fig.update_layout(
+                height=400,
+                legend=dict(
+                    orientation='h',
+                    yanchor='top',
+                    y=-0.15,
+                    xanchor='center',
+                    x=0.5
+                ),
+                margin=dict(b=100)
+            )
             st.plotly_chart(fig, use_container_width=True)
         
         with col2:

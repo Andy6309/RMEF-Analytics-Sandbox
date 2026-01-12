@@ -27,26 +27,59 @@ EXPENSE_COLORS = ['#112e51', '#205493', '#0071bc']
 PROGRAM_COLORS = ['#112e51', '#0071bc', '#4aa3df']
 
 
+def get_project_root():
+    """Get the project root directory"""
+    from pathlib import Path
+    return Path(__file__).parent.parent.parent
+
+
+def get_db_path():
+    """Get the database path"""
+    return get_project_root() / "data" / "rmef_analytics.db"
+
+
+def count_990_pdfs() -> int:
+    """Count the number of Form 990 PDFs in assets folder"""
+    assets_path = get_project_root() / "assets"
+    return len(list(assets_path.glob("*990*.pdf")))
+
+
+def run_form_990_etl():
+    """Run the Form 990 ETL pipeline"""
+    import sys
+    project_root = get_project_root()
+    sys.path.insert(0, str(project_root))
+    from pipelines.etl_990_pipeline import Form990Pipeline
+    db_path = get_db_path()
+    pipeline = Form990Pipeline(db_path=f"sqlite:///{db_path}")
+    pipeline.run(extract_fresh=True)
+
+
 def load_990_financial_data() -> pd.DataFrame:
     """Load Form 990 financial data from database"""
     from sqlalchemy import create_engine, text
-    from pathlib import Path
     
-    db_path = Path(__file__).parent.parent.parent / "data" / "rmef_analytics.db"
+    db_path = get_db_path()
     engine = create_engine(f"sqlite:///{db_path}")
     
-    # Check if table exists, if not run the ETL pipeline
+    # Check if table exists AND has data matching PDF count
+    needs_etl = False
     with engine.connect() as conn:
         result = conn.execute(text(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='fact_990_financial'"
         ))
         if not result.fetchone():
-            # Table doesn't exist - run the Form 990 ETL pipeline
-            import sys
-            sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-            from pipelines.etl_990_pipeline import Form990Pipeline
-            pipeline = Form990Pipeline(db_path=f"sqlite:///{db_path}")
-            pipeline.run(extract_fresh=True)
+            needs_etl = True
+        else:
+            count_result = conn.execute(text("SELECT COUNT(*) FROM fact_990_financial"))
+            db_count = count_result.fetchone()[0]
+            pdf_count = count_990_pdfs()
+            # Run ETL if no data or if new PDFs were added
+            if db_count == 0 or db_count < pdf_count:
+                needs_etl = True
+    
+    if needs_etl:
+        run_form_990_etl()
     
     query = """
         SELECT * FROM fact_990_financial
@@ -100,7 +133,14 @@ def format_percent(value: float) -> str:
 
 def render_form_990_analytics():
     """Main render function for Form 990 analytics section"""
-    st.subheader("Form 990 Financial Analysis")
+    col_title, col_refresh = st.columns([4, 1])
+    with col_title:
+        st.subheader("Form 990 Financial Analysis")
+    with col_refresh:
+        if st.button("Refresh Data", help="Re-extract data from Form 990 PDFs"):
+            run_form_990_etl()
+            st.rerun()
+    
     st.markdown("*IRS Form 990 data across fiscal years - Revenue, Expenses, and Program Services*")
     
     # Load data
