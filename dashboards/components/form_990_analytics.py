@@ -29,9 +29,25 @@ PROGRAM_COLORS = ['#112e51', '#0071bc', '#4aa3df']
 
 def load_990_financial_data() -> pd.DataFrame:
     """Load Form 990 financial data from database"""
-    from sqlalchemy import create_engine
+    from sqlalchemy import create_engine, text
+    from pathlib import Path
     
-    engine = create_engine("sqlite:///data/rmef_analytics.db")
+    db_path = Path(__file__).parent.parent.parent / "data" / "rmef_analytics.db"
+    engine = create_engine(f"sqlite:///{db_path}")
+    
+    # Check if table exists, if not run the ETL pipeline
+    with engine.connect() as conn:
+        result = conn.execute(text(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name='fact_990_financial'"
+        ))
+        if not result.fetchone():
+            # Table doesn't exist - run the Form 990 ETL pipeline
+            import sys
+            sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+            from pipelines.etl_990_pipeline import Form990Pipeline
+            pipeline = Form990Pipeline(db_path=f"sqlite:///{db_path}")
+            pipeline.run(extract_fresh=True)
+    
     query = """
         SELECT * FROM fact_990_financial
         ORDER BY fiscal_year
@@ -42,8 +58,10 @@ def load_990_financial_data() -> pd.DataFrame:
 def load_990_program_data() -> pd.DataFrame:
     """Load Form 990 program service data from database"""
     from sqlalchemy import create_engine
+    from pathlib import Path
     
-    engine = create_engine("sqlite:///data/rmef_analytics.db")
+    db_path = Path(__file__).parent.parent.parent / "data" / "rmef_analytics.db"
+    engine = create_engine(f"sqlite:///{db_path}")
     query = """
         SELECT * FROM fact_990_program_service
         ORDER BY fiscal_year, program_name
