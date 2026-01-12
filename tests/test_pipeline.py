@@ -16,9 +16,11 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from models.schema import (
     get_engine, create_tables, get_session,
     DimDonor, DimCampaign, DimDate, DimHabitat, DimProject,
-    FactDonation, FactElkPopulation, FactConservation, Base
+    FactDonation, FactElkPopulation, FactConservation,
+    Fact990Financial, Fact990ProgramService, Base
 )
 from pipelines.etl_pipeline import RMEFPipeline
+from pipelines.etl_990_pipeline import Form990Pipeline
 
 
 class TestDatabaseSchema:
@@ -48,7 +50,8 @@ class TestDatabaseSchema:
         expected_tables = [
             'dim_donor', 'dim_campaign', 'dim_date', 
             'dim_habitat', 'dim_project',
-            'fact_donation', 'fact_elk_population', 'fact_conservation'
+            'fact_donation', 'fact_elk_population', 'fact_conservation',
+            'fact_990_financial', 'fact_990_program_service'
         ]
         
         for table in expected_tables:
@@ -186,6 +189,90 @@ class TestDataIntegrity:
             """))
             missing_dates = result.scalar()
             assert missing_dates == 0, f"Found {missing_dates} donations with missing date references"
+
+
+class TestForm990Pipeline:
+    """Test Form 990 ETL pipeline"""
+    
+    @pytest.fixture
+    def pipeline_990_with_temp_db(self):
+        """Create Form 990 pipeline with temporary database"""
+        fd, path = tempfile.mkstemp(suffix='.db')
+        os.close(fd)
+        pipeline = Form990Pipeline(db_path=f"sqlite:///{path}")
+        yield pipeline, path
+        os.unlink(path)
+    
+    def test_990_pipeline_runs_without_error(self, pipeline_990_with_temp_db):
+        """Test that Form 990 pipeline completes without errors"""
+        pipeline, path = pipeline_990_with_temp_db
+        
+        original_cwd = os.getcwd()
+        os.chdir(Path(__file__).parent.parent)
+        
+        try:
+            stats = pipeline.run(extract_fresh=True)
+            assert 'errors' in stats
+            assert len(stats['errors']) == 0, f"Pipeline had errors: {stats['errors']}"
+        finally:
+            os.chdir(original_cwd)
+    
+    def test_990_pipeline_loads_financial_data(self, pipeline_990_with_temp_db):
+        """Test that Form 990 pipeline loads financial data"""
+        pipeline, path = pipeline_990_with_temp_db
+        
+        original_cwd = os.getcwd()
+        os.chdir(Path(__file__).parent.parent)
+        
+        try:
+            stats = pipeline.run(extract_fresh=True)
+            assert stats['financial_records_loaded'] > 0, "No financial records loaded"
+            assert stats['program_records_loaded'] > 0, "No program records loaded"
+        finally:
+            os.chdir(original_cwd)
+    
+    def test_990_pipeline_idempotent(self, pipeline_990_with_temp_db):
+        """Test that running Form 990 pipeline twice doesn't duplicate data"""
+        pipeline, path = pipeline_990_with_temp_db
+        
+        original_cwd = os.getcwd()
+        os.chdir(Path(__file__).parent.parent)
+        
+        try:
+            # Run pipeline twice
+            stats1 = pipeline.run(extract_fresh=True)
+            
+            # Create new pipeline instance for second run
+            pipeline2 = Form990Pipeline(db_path=f"sqlite:///{path}")
+            stats2 = pipeline2.run(extract_fresh=False)
+            
+            # Second run should load 0 new records (already exist)
+            assert stats2['financial_records_loaded'] == 0, "Duplicate financial records on second run"
+        finally:
+            os.chdir(original_cwd)
+    
+    def test_990_table_columns(self, pipeline_990_with_temp_db):
+        """Test that Form 990 tables have expected columns"""
+        pipeline, path = pipeline_990_with_temp_db
+        
+        original_cwd = os.getcwd()
+        os.chdir(Path(__file__).parent.parent)
+        
+        try:
+            pipeline.run(extract_fresh=True)
+            
+            engine = create_engine(f"sqlite:///{path}")
+            with engine.connect() as conn:
+                # Check fact_990_financial columns
+                result = conn.execute(text("PRAGMA table_info(fact_990_financial)"))
+                columns = [row[1] for row in result]
+                
+                expected_columns = ['fiscal_year', 'total_revenue', 'total_expenses', 
+                                  'contributions_and_grants', 'program_service_revenue']
+                for col in expected_columns:
+                    assert col in columns, f"Column {col} not in fact_990_financial"
+        finally:
+            os.chdir(original_cwd)
 
 
 if __name__ == "__main__":

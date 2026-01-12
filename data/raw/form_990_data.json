@@ -1,0 +1,146 @@
+[
+  {
+    "fiscal_year": 2022,
+    "tax_year": 2022,
+    "organization_name": "Rocky Mountain Elk Foundation, Inc.",
+    "ein": "81-0421425",
+    "contributions_and_grants": 52185551.0,
+    "program_service_revenue": 7406675.0,
+    "investment_income": 696168.0,
+    "other_revenue": 1622582.0,
+    "total_revenue": 61910976.0,
+    "grants_and_similar_paid": 4250918.0,
+    "salaries_and_wages": 12708353.0,
+    "other_employee_benefits": 0.0,
+    "payroll_taxes": 0.0,
+    "professional_fees": 0.0,
+    "occupancy": 0.0,
+    "travel": 0.0,
+    "conferences_and_meetings": 0.0,
+    "depreciation": 0.0,
+    "other_expenses": 0.0,
+    "total_expenses": 46105636.0,
+    "total_assets": 0.0,
+    "total_liabilities": 0.0,
+    "net_assets": 0.0,
+    "program_services_expenses": 33836113.0,
+    "management_and_general_expenses": 0.0,
+    "fundraising_expenses": 0.0,
+    "revenue_less_expenses": 0.0,
+    "employees_count": 2022,
+    "volunteers_count": 6,
+    "program_services": {
+      "Land Protection & Access": {
+        "expenses": 13273113.0,
+        "grants": 523049.0,
+        "revenue": 7119838.0
+      },
+      "Hunting Heritage": {
+        "expenses": 13758000.0,
+        "grants": 944150.0,
+        "revenue": 0.0
+      },
+      "Habitat Stewardship": {
+        "expenses": 6805000.0,
+        "grants": 2173956.0,
+        "revenue": 0.0
+      }
+    }
+  },
+  {
+    "fiscal_year": 2023,
+    "tax_year": 2023,
+    "organization_name": "Rocky Mountain Elk Foundation, Inc.",
+    "ein": "81-0421425",
+    "contributions_and_grants": 53782966.0,
+    "program_service_revenue": 35678314.0,
+    "investment_income": 2109923.0,
+    "other_revenue": 1105960.0,
+    "total_revenue": 92677163.0,
+    "grants_and_similar_paid": 4267063.0,
+    "salaries_and_wages": 13269366.0,
+    "other_employee_benefits": 0.0,
+    "payroll_taxes": 0.0,
+    "professional_fees": 0.0,
+    "occupancy": 0.0,
+    "travel": 0.0,
+    "conferences_and_meetings": 0.0,
+    "depreciation": 0.0,
+    "other_expenses": 0.0,
+    "total_expenses": 63988225.0,
+    "total_assets": 0.0,
+    "total_liabilities": 0.0,
+    "net_assets": 0.0,
+    "program_services_expenses": 51046685.0,
+    "management_and_general_expenses": 0.0,
+    "fundraising_expenses": 0.0,
+    "revenue_less_expenses": 0.0,
+    "employees_count": 2023,
+    "volunteers_count": 6,
+    "program_services": {
+      "Land Protection & Access": {
+        "expenses": 29326705.0,
+        "grants": 400000.0,
+        "revenue": 19404705.0
+      },
+      "Hunting Heritage": {
+        "expenses": 13853244.0,
+        "grants": 1200827.0,
+        "revenue": 0.0
+      },
+      "Habitat Stewardship": {
+        "expenses": 7866736.0,
+        "grants": 2878922.0,
+        "revenue": 0.0
+      }
+    }
+  },
+  {
+    "fiscal_year": 2024,
+    "tax_year": 2024,
+    "organization_name": "Rocky Mountain Elk Foundation, Inc.",
+    "ein": "81-0421425",
+    "contributions_and_grants": 55505375.0,
+    "program_service_revenue": 21320116.0,
+    "investment_income": 5173485.0,
+    "other_revenue": 1529660.0,
+    "total_revenue": 83528636.0,
+    "grants_and_similar_paid": 5532503.0,
+    "salaries_and_wages": 14187031.0,
+    "other_employee_benefits": 0.0,
+    "payroll_taxes": 0.0,
+    "professional_fees": 0.0,
+    "occupancy": 0.0,
+    "travel": 0.0,
+    "conferences_and_meetings": 0.0,
+    "depreciation": 0.0,
+    "other_expenses": 0.0,
+    "total_expenses": 54454199.0,
+    "total_assets": 0.0,
+    "total_liabilities": 0.0,
+    "net_assets": 0.0,
+    "program_services_expenses": 63778000.0,
+    "management_and_general_expenses": 0.0,
+    "fundraising_expenses": 0.0,
+    "revenue_less_expenses": 0.0,
+    "employees_count": 2024,
+    "volunteers_count": 6,
+    "program_services": {
+      "Land Protection & Access": {
+        "expenses": 30923000.0,
+        "grants": 2931207.0,
+        "revenue": 23013295.0
+      },
+      "Hunting Heritage": {
+        "expenses": 12965000.0,
+        "grants": 1324320.0,
+        "revenue": 0.0
+      },
+      "Habitat Stewardship": {
+        "expenses": 19890000.0,
+        "grants": 3787137.0,
+        "revenue": 0.0
+      }
+    }
+  }
+]

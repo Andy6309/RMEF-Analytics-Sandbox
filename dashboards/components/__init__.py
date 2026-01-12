@@ -8,6 +8,7 @@ from .donation_analytics import render_donation_analytics
 from .elk_population import render_elk_population
 from .conservation_habitat import render_conservation_habitat
 from .data_tables import render_data_tables
+from .form_990_analytics import render_form_990_analytics
 
 __all__ = [
     'render_sidebar',
@@ -15,5 +16,6 @@ __all__ = [
     'render_donation_analytics',
     'render_elk_population',
     'render_conservation_habitat',
-    'render_data_tables'
+    'render_data_tables',
+    'render_form_990_analytics'
 ]

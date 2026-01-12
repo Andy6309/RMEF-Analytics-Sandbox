@@ -180,6 +180,59 @@ class FactConservation(Base):
     habitat = relationship("DimHabitat", back_populates="conservation_facts")
 
 
+class Fact990Financial(Base):
+    """Fact table for Form 990 financial data - unified schema across years"""
+    __tablename__ = 'fact_990_financial'
+    
+    financial_key = Column(Integer, primary_key=True, autoincrement=True)
+    fiscal_year = Column(Integer, nullable=False, unique=True)
+    tax_year = Column(Integer, nullable=False)
+    
+    # Revenue
+    contributions_and_grants = Column(Float, default=0.0)
+    program_service_revenue = Column(Float, default=0.0)
+    investment_income = Column(Float, default=0.0)
+    other_revenue = Column(Float, default=0.0)
+    total_revenue = Column(Float, default=0.0)
+    
+    # Expenses
+    grants_and_similar_paid = Column(Float, default=0.0)
+    salaries_and_wages = Column(Float, default=0.0)
+    total_expenses = Column(Float, default=0.0)
+    
+    # Balance Sheet
+    total_assets = Column(Float, default=0.0)
+    total_liabilities = Column(Float, default=0.0)
+    net_assets = Column(Float, default=0.0)
+    
+    # Functional Allocation
+    program_services_expenses = Column(Float, default=0.0)
+    management_and_general_expenses = Column(Float, default=0.0)
+    fundraising_expenses = Column(Float, default=0.0)
+    
+    # Calculated
+    revenue_less_expenses = Column(Float, default=0.0)
+    
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class Fact990ProgramService(Base):
+    """Fact table for Form 990 program service details"""
+    __tablename__ = 'fact_990_program_service'
+    
+    program_key = Column(Integer, primary_key=True, autoincrement=True)
+    fiscal_year = Column(Integer, nullable=False)
+    program_name = Column(String(100), nullable=False)
+    
+    # Measures
+    expenses = Column(Float, default=0.0)
+    grants = Column(Float, default=0.0)
+    revenue = Column(Float, default=0.0)
+    
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+
 # Database initialization functions
 
 def get_engine(db_path: str = "sqlite:///data/rmef_analytics.db"):

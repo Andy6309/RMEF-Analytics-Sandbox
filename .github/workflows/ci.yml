@@ -36,6 +36,10 @@ jobs:
       run: |
         python pipelines/etl_pipeline.py
     
+    - name: Run Form 990 ETL Pipeline
+      run: |
+        python pipelines/etl_990_pipeline.py
+    
     - name: Run Tests
       run: |
         pytest tests/ -v --cov=. --cov-report=xml --cov-report=html
