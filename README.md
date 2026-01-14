@@ -15,10 +15,11 @@ A full-stack analytics project demonstrating end-to-end data engineering and das
 ## Project Overview
 
 This analytics sandbox provides:
-- **Data Integration**: Ingests data from CSV and JSON sources (donors, donations, campaigns, conservation projects, habitat areas)
+- **Data Integration**: Ingests data from CSV, JSON, and PDF sources (donors, donations, campaigns, conservation projects, habitat areas, IRS Form 990 filings)
 - **Star Schema Data Model**: Dimensional modeling with fact and dimension tables optimized for analytics
-- **ETL Pipeline**: Automated data extraction, transformation, and loading with error handling and logging
+- **ETL Pipeline**: Automated data extraction, transformation, and loading with error handling and logging, including PDF parsing for Form 990 data
 - **Interactive Dashboard**: Streamlit-based visualization of key conservation and fundraising metrics
+- **Financial Analysis**: Multi-year Form 990 financial reporting with revenue, expense, and program service analytics
 
 ## Project Structure
 
@@ -54,6 +55,7 @@ RMEF Analytics Sandbox/
 - **Backend**: Python 3.9+, Pandas, SQLAlchemy
 - **Database**: SQLite (easily portable to PostgreSQL)
 - **Dashboard**: Streamlit with Plotly visualizations
+- **PDF Processing**: pdfplumber for Form 990 data extraction
 - **Testing**: pytest
 
 ## Data Model
@@ -71,6 +73,8 @@ RMEF Analytics Sandbox/
 - `fact_donation` - Donation transactions with amounts and payment details
 - `fact_elk_population` - Elk population counts by habitat and year
 - `fact_conservation` - Conservation project metrics (budget, acres, impact)
+- `fact_990_financial` - IRS Form 990 financial data (revenue, expenses, assets, liabilities)
+- `fact_990_program_service` - Form 990 program service details (expenses, grants, revenue by program)
 
 ## Quick Start
 
@@ -108,19 +112,50 @@ pytest tests/ -v
 
 ## Dashboard Features
 
-### Key Metrics (KPIs)
+The dashboard includes **two main tabs**: Operations Dashboard and Form 990 Financial Analysis.
+
+### Operations Dashboard
+
+#### Key Metrics (KPIs)
 1. **Total Donations** - Sum of all donation amounts
 2. **Acres Protected** - Total conservation land protected
 3. **Elk Population** - Current elk count with year-over-year change
 4. **Total Members** - Active donor/member count
 
-### Interactive Visualizations
+#### Interactive Visualizations
 - Donations by Campaign Type (bar chart)
 - Donations by Donor Type (pie chart)
 - Membership Growth Over Time (combo chart)
-- Elk Population Trends by Habitat (line chart)
+- **Elk Population by Habitat** - Interactive US map heatmap with state-level population density and hover cards showing individual habitat breakdowns
 - Conservation Projects by Type (grouped bar)
 - Habitat Quality by Region (scatter plot)
+
+### Form 990 Financial Analysis
+
+Comprehensive financial reporting dashboard analyzing IRS Form 990 data across multiple fiscal years.
+
+#### Features:
+- **Multi-Year Financial Overview** - Revenue, expenses, and net assets trends (2020-2023)
+- **Year-over-Year Comparisons** - Percentage changes and growth metrics
+- **Revenue Breakdown** - Contributions, program service revenue, investment income, and other revenue
+- **Expense Analysis** - Program services, management & general, and fundraising expenses
+- **Functional Allocation** - Pie chart showing expense distribution across functions
+- **Program Service Details** - Individual program expenses, grants, and revenue
+- **Balance Sheet Metrics** - Total assets, liabilities, and net assets over time
+- **Financial Health Indicators** - Program efficiency ratios and sustainability metrics
+
+#### Data Source:
+- Automated PDF extraction from actual RMEF Form 990 filings (2020-2023)
+- ETL pipeline processes PDF data into structured database tables
+- Real financial data providing authentic nonprofit analytics experience
+
+#### Key Metrics Tracked:
+- Total Revenue & Expenses by year
+- Net Assets (End of Year)
+- Program Services Expenses vs. Total Expenses
+- Revenue Less Expenses (surplus/deficit)
+- Grants and Similar Amounts Paid
+- Investment Income trends
 
 ### Filters
 - **Date Range** - Filter donations by date
@@ -192,6 +227,15 @@ Export dashboard data for advanced analysis in Power BI:
 - Quality scores
 - Conservation status
 - Threat assessments
+
+### Form 990 Financial Data (PDF)
+IRS Form 990 filings for fiscal years 2020-2023 including:
+- Total revenue and expenses
+- Revenue breakdown (contributions, program service, investment, other)
+- Expense allocation (program services, management, fundraising)
+- Balance sheet data (assets, liabilities, net assets)
+- Program service details with individual program metrics
+- Automated PDF extraction and parsing into structured database
 
 ## Data Quality Checks
 
