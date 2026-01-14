@@ -25,27 +25,64 @@ This analytics sandbox provides:
 
 ```
 RMEF Analytics Sandbox/
+├── .devcontainer/              # Development container configuration
+├── .github/                    # GitHub Actions workflows
+├── .streamlit/                 # Streamlit configuration
+├── assets/                     # Static assets and images
+│   ├── 2022-IRS-Form-990.pdf
+│   ├── 2023-IRS-Form-990.pdf
+│   ├── 2024-IRS-Form-990-1.pdf
+│   ├── RMEF-Analytics.png
+│   └── rmef-logo.jpg
 ├── data/
 │   ├── raw/                    # Source data files
-│   │   ├── donors.csv          # Donor/member information
-│   │   ├── donations.csv       # Donation transactions
 │   │   ├── campaigns.csv       # Fundraising campaigns
 │   │   ├── conservation_projects.json  # Conservation projects
+│   │   ├── donations.csv       # Donation transactions
+│   │   ├── donors.csv          # Donor/member information
+│   │   ├── form_990_data.json  # Extracted Form 990 financial data
 │   │   └── habitat_areas.json  # Elk habitat data
-│   └── processed/              # Transformed data (if needed)
-├── pipelines/
-│   ├── __init__.py
-│   └── etl_pipeline.py         # Main ETL pipeline
+│   ├── processed/              # Transformed data (if needed)
+│   └── rmef_analytics.db       # SQLite database
+├── dashboards/
+│   ├── components/             # Dashboard UI components
+│   │   ├── __init__.py
+│   │   ├── conservation_habitat.py
+│   │   ├── data_tables.py
+│   │   ├── donation_analytics.py
+│   │   ├── elk_population.py
+│   │   ├── form_990_analytics.py
+│   │   ├── membership_analytics.py
+│   │   ├── powerbi_export_ui.py
+│   │   └── sidebar.py
+│   ├── utils/                  # Dashboard utility functions
+│   │   ├── __init__.py
+│   │   ├── data_loaders.py
+│   │   ├── formatters.py
+│   │   ├── powerbi_export.py
+│   │   └── styling.py
+│   ├── app.py                  # Main Streamlit dashboard application
+│   └── app_backup.py           # Dashboard backup
+├── docs/
+│   └── POWERBI_EXPORT_GUIDE.md # Power BI export documentation
 ├── models/
 │   ├── __init__.py
 │   └── schema.py               # SQLAlchemy ORM models (star schema)
-├── dashboards/
-│   └── app.py                  # Streamlit dashboard application
 ├── notebooks/                  # Jupyter notebooks for exploration
+├── pipelines/
+│   ├── __init__.py
+│   ├── etl_990_pipeline.py     # Form 990 ETL pipeline
+│   ├── etl_pipeline.py         # Main ETL pipeline
+│   ├── extract_990_data.py     # PDF extraction for Form 990
+│   └── etl.log                 # ETL execution logs
 ├── tests/
 │   ├── __init__.py
 │   ├── test_data_quality.py    # Data quality validation tests
 │   └── test_pipeline.py        # Pipeline functionality tests
+├── .gitignore                  # Git ignore rules
+├── .python-version             # Python version specification
+├── generate_donations.py       # Script to generate donation data
+├── generate_members.py         # Script to generate member data
 ├── requirements.txt            # Python dependencies
 └── README.md                   # This file
 ```
